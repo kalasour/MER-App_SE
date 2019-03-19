@@ -1,7 +1,7 @@
 # MER-App_SE
 
 #for first time
-$ npm install
+> npm install
 
 #for run
-$ react-native run-android
+> react-native run-android
