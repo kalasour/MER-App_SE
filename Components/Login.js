@@ -16,7 +16,7 @@ export default class Login extends Component {
       <Header renderHeader = "center" backgroundColor = "#84cee8" >
            <Left/>
            <Body>
-             <Title>Sign in</Title>
+             <Title>log in</Title>
            </Body>
            <Right />
       </Header>     
@@ -38,7 +38,7 @@ export default class Login extends Component {
               <Label>Password</Label>
               <Input />
             </Item>
-            <Button primary><Text> Sign in </Text></Button>
+            <Button style={{alignSelf:'center',marginTop:10}} primary><Text> login in </Text></Button>
           </Form>
       </Content>
       
