@@ -24,8 +24,8 @@ export default class App extends Component {
             <Button primary onPress={() => { this.props.navigation.navigate('Login') }}><Text> Login </Text></Button>
             <Button success onPress={() => { this.props.navigation.navigate('Register') }}><Text> Register </Text></Button>
             <Button info onPress={() => { this.props.navigation.navigate('Details') }}><Text> Details </Text></Button>
-            <Button warning onPress={() => { this.props.navigation.navigate('Subject') }}><Text> subject</Text></Button>
-            <Button danger><Text> undefine </Text></Button>
+            <Button warning onPress={() => { this.props.navigation.navigate('Subject') }}><Text> Subject</Text></Button>
+            <Button danger onPress={() => { this.props.navigation.navigate('Teacher') }}><Text> Teacher </Text></Button>
             <Button dark><Text> undefine </Text></Button>
           </Container>
         </Content>

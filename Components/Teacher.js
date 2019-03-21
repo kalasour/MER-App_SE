@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Card, CardItem, Text, Icon, Right } from 'native-base';
 
-export default class Subject extends Component {
+export default class Teacher extends Component {
   
     constructor(props) {
         super(props);
@@ -13,99 +13,89 @@ export default class Subject extends Component {
     return (
       <Container>
         <Content>
-          <Card>
+           <Card>
             <CardItem>
-              <Text> 261430 - Wireless Networks </Text>
+              <Text> Anya Apavatjrut </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 261421 - Computer Hardware Design  </Text>
+              <Text> Arnan Sipitakiat </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 261497 - Selected Topics in Software (Competitive Programming)  </Text>
+              <Text> Chinawat Isradisaikul </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 261497 - Selected Topics in Software (iOS Development using Swift) </Text>
+              <Text> Dome Potikanond </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 261479 - Bioinformatics Programming </Text>
+              <Text> Juggapong Natwichai </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 261444 - Advanced Database Systems </Text>
+              <Text> Karn Patanukhom </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 261499 - Selected Topic in CI (Natural Language Processing) </Text>
+              <Text> Kenneth Cosh </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 261446 - Information Systems </Text>
+              <Text> Lachana Ramingwong </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 261449 - Software Testing </Text>
-             </CardItem>
-           </Card>
-           <Card>
-            <CardItem>
-              <Text> 261465 - Computer Graphics </Text>
+              <Text> Narathip Tiangtae </Text>
              </CardItem>
            </Card>
         <Card>
             <CardItem>
-              <Text> 261448 - Data Mining for Computer Engineering </Text>
+              <Text> Narissara Eiamkanitchat </Text>
              </CardItem>
            </Card>
         <Card>
             <CardItem>
-              <Text> 261473 - Computer-Aided Manufacturing </Text>
+              <Text> Paskorn Champrasert </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 269431 - Wireless Sensor Network </Text>
+              <Text> Pruet Boonma </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 261433 - Network Programming </Text>
+              <Text> Patiwet Wuttisarnwattana </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 261497 - Selected Topics in Software (Personal Software Process) </Text>
+              <Text> Sakgasit Ramingwong </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 261453 - Digital Image Processing </Text>
+              <Text> Sansanee Auephanwiriyakul </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 269421 - Computer Network Traffic Analysis </Text>
+              <Text> Trasapong Thaiupathump </Text>
              </CardItem>
            </Card>
            <Card>
             <CardItem>
-              <Text> 261494 - Adv./Selected Topics in CPE (R for Data science) </Text>
-             </CardItem>
-           </Card>
-           <Card>
-            <CardItem>
-              <Text> 261438 - MPLS </Text>
+              <Text> Yuthapong Somchit </Text>
              </CardItem>
            </Card>
         </Content>

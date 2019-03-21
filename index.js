@@ -9,6 +9,9 @@ import Login from './Components/Login'
 import Register from './Components/Register'
 import Home from './Components/Home'
 import Details from './Components/Details'
+import Subject from './Components/Subject'
+import Teachser from './Components/Teacher'
+
 const AppNavigator = createStackNavigator({
     App: {
         screen: App
@@ -22,6 +25,8 @@ const AppNavigator = createStackNavigator({
         screen: Details
     }, Subject:{
         screen: Subject
+    }, Teacher:{
+        screen: Teacher
     }
 },
     {
