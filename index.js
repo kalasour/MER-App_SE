@@ -20,6 +20,8 @@ const AppNavigator = createStackNavigator({
         screen: Home
     }, Details: {
         screen: Details
+    }, Subject:{
+        screen: Subject
     }
 },
     {
