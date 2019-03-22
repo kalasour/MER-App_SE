@@ -49,6 +49,9 @@ export default class Login extends Component {
               });
               this.props.navigation.dispatch(resetAction);
             }} ><Text> login </Text></Button>
+            <Button style={{ alignSelf: 'center', marginTop: 10 }} primary onPress={() => {
+              this.props.navigation.navigate('Register')
+            }} ><Text> Register </Text></Button>
           </Form>
         </Content>
 

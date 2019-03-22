@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid'
-import { Container, Header, Content, Form, Item, Input,Button,Label,Left,Right,Body,Title,Text } from 'native-base';
-
+import { Container, Header, Content, Form, Item, Input, Button, Label, Left, Right, Body, Title, Text } from 'native-base';
+import {
+  StackActions,
+  NavigationActions
+} from "react-navigation";
 export default class Register extends Component {
   constructor(props) {
     super(props);
@@ -13,12 +16,12 @@ export default class Register extends Component {
   render() {
     return (
       <Container>
-        <Header renderHeader = "center" backgroundColor = "#2cba2c" >
-            <Left/>
-              <Body>
-                <Title>Register</Title>
-              </Body>
-            <Right />
+        <Header renderHeader="center" backgroundColor="#2cba2c" >
+          <Left />
+          <Body>
+            <Title>Register</Title>
+          </Body>
+          <Right />
         </Header>
 
 
@@ -26,28 +29,34 @@ export default class Register extends Component {
 
         <Content>
           <Form>
-              <Item floatingLabel>
-                <Label>Firstname</Label>
-                <Input />
-              </Item>
+            <Item floatingLabel>
+              <Label>Firstname</Label>
+              <Input />
+            </Item>
 
-              <Item floatingLabel>
-                <Label>Lastname</Label>
-                <Input />
-              </Item>
+            <Item floatingLabel>
+              <Label>Lastname</Label>
+              <Input />
+            </Item>
 
-              <Item floatingLabel>
-                <Label>Username</Label>
-                <Input />
-              </Item>
+            <Item floatingLabel>
+              <Label>Username</Label>
+              <Input />
+            </Item>
 
-              <Item floatingLabel>
-                <Label>Password</Label>
-                <Input />
-              </Item>
+            <Item floatingLabel>
+              <Label>Password</Label>
+              <Input />
+            </Item>
 
-              <Button style={{alignSelf:'center',marginTop:10}} primary><Text> Sign up </Text></Button>
-            </Form>
+            <Button style={{ alignSelf: 'center', marginTop: 10 }} primary onPress={() => {
+              const resetAction = StackActions.reset({
+                index: 0,
+                actions: [NavigationActions.navigate({ routeName: "Home" })]
+              });
+              this.props.navigation.dispatch(resetAction);
+            }}><Text> Sign up </Text></Button>
+          </Form>
 
 
         </Content>
