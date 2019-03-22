@@ -1,0 +1,27 @@
+{
+    "261456": {
+        "name": "Computer Network Design and Management(การออกแบบและจัดการเครือข่ายคอมพิวเตอร์)",
+        "teacher":"Yuthapong Somchit",
+        "detail":"Computer network review. Principles and architecture of enterprise network design. Small and large backbone design. Network management. Case studies of network design and management.( ทบทวนเครือข่ายคอมพิวเตอร์ หลักการและสถาปัตยกรรมของการออกแบบเครือข่ายขนาดใหญ่ การออกแบบเครือข่ายแบ็คโบนขนาดเล็กและขนาดใหญ่ การจัดการเครือข่าย กรณีศึกษาการออกแบบและการจัดการระบบเครือข่าย) "
+    },
+    "261447": {
+        "name": "Network and Information Security(ความปลอดภัยของเครือข่ายและสารสนเทศ) ",
+        "teacher":"staff",
+        "detail":"Introduction to network and information security. Security policy specifications and evaluation. Firewalls. Hardening of Operating Systems. Authentication and authorization. Monitoring, audit and review. Secret-key and public-key encryption. Digital signature and certification. World-Wide-Web security. E-mail security. General network transportation security. Social and non-technical issues.(บทนำเกี่ยวกับความปลอดภัยของเครือข่ายและสารสนเทศ การกำหนดและการใช้งานนโยบายความปลอดภัย ไฟร์วอลล์ การเสริมความปลอดภัยของระบบปฏิบัติการ การยืนยันตัวตนและการยืนยันอำนาจ การเฝ้าดู การตรวจสอบ และการทบทวน การเข้ารหัสด้วยกุญแจลับและกุญแจสาธารณะ ลายเซ็นและใบอนุญาตดิจิตอล ความปลอดภัยบนเครือข่ายเวิลด์ไวด์เว็บ ความปลอดภ้ยของอีเมลล์ ความปลอดภัยในการขนถ่ายข้อมูลผ่านเครือข่ายยทั่วไป ประเด็นทางสังคมและประเด็นอื่นๆ) "
+    },
+    "261234": {
+        "name": "Introduction to Computational Intelligence for Computer Engineering (บทนำความฉลาดเชิงคำนวณสำหรับวิศวกรรมคอมพิวเตอร์) ",
+        "teacher":"Sansanee Auephanwiriyakul",
+        "detail":"Introduction to computational intelligence. Introduction to artificial neural networks. Introduction to fuzzy systems. Introduction to evolutionary computing. Introduction to swarm intelligence.(บทนำความฉลาดเชิงคำนวณ บทนำโครงข่ายประสาทเทียม บทนำระบบฟัซซี บทนำการคำนวณเชิงวิวัฒนาการ บทนำความฉลาดเชิงกลุ่ม) "
+    },
+    "261457": {
+        "name": "Digital Image and Video Compression (การบีบอัดข้อมูลภาพและวิดีโอดิจิทัล) ",
+        "teacher":"Dome Potikanond",
+        "detail":"Introduction to image and video coding. Lossless image compression. Lossy image compression. Video compression. Isochronous information and applications.(บทนำการเข้ารหัสภาพและวิดีโอ การบีบอัดข้อมูลภาพแบบไม่มีการสูญเสีย การบีบอัดข้อมูลภาพแบบมีการสูญเสีย การบีบอัดข้อมูลวิดีโอ การส่งข้อมูลแบบเวลาเป็นเรื่องสำคัญและการประยุกต์ใช้) "
+    },
+    "261458": {
+        "name": "Machine Vision (การมองเห็นของเครื่อง) ",
+        "teacher":"Karn Patanukhom",
+        "detail":"Images and fundamentals of image processing. Image feature extraction. Image recognition and classification. Object detection. Grouping and segmentation. Moving object tracking. Applications of machine vision technologies.( รูปภาพและพื้นฐานการประมวลผลภาพ การสกัดคุณลักษณะเด่นของรูปภาพ การรู้จำและการจำแนกรูปภาพ การค้นหาวัตถุ การจัดกลุ่มและการแบ่งย่อย การติดตามวัตถุเคลื่อนที่ การประยุกต์ใช้เทคโนโลยีการมองเห็นของเครื่อง) "
+    }
+}

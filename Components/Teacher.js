@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { Container, Header, Content, Card, CardItem, Text, Icon, Right } from 'native-base';
 
 export default class Teacher extends Component {
-  
+  static navigationOptions = {
+    title: 'Teacher', header: null, drawerIcon: ({ tintColor }) => {
+      return (<Icon name="chalkboard-teacher" style={{ width: 30, color: tintColor }} type="FontAwesome5" />);
+    }
+  };
     constructor(props) {
         super(props);
         this.state = {

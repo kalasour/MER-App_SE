@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { Container, Header, Content, Card, CardItem, Text, Icon, Right } from 'native-base';
 
 export default class Subject extends Component {
-  
+  static navigationOptions = {
+    title: 'Subject', header: null, drawerIcon: ({ tintColor }) => {
+      return (<Icon name="subject" style={{ width: 30, color: tintColor }} type="MaterialIcons" />);
+    }
+  };
     constructor(props) {
         super(props);
         this.state = {

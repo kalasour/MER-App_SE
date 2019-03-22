@@ -9,12 +9,38 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Button, Text } from 'native-base';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-
+import {
+  StackActions,
+  NavigationActions
+} from "react-navigation";
 
 
 export default class App extends Component {
   static navigationOptions = { title: 'Mer', header: null };
+  constructor(props) {
+    super(props);
+    this.state = {
+      logged: false
+    };
+  }
+  componentDidMount() {
+    if (this.state.logged) {
+      const resetAction = StackActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: "Home" })]
+      });
+      this.props.navigation.dispatch(resetAction);
+    }
+    else {
+      const resetAction = StackActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: "Login" })]
+      });
+      this.props.navigation.dispatch(resetAction);
+    }
+  }
   render() {
+
     return (
       <Container  >
         <Header full />
