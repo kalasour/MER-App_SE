@@ -11,15 +11,16 @@ export default class Details extends Component {
     };
   }
   componentDidMount() {
-    const { navigation } = this.props;
-    this.setState({ Selected: navigation.getParam("Selected", "error"), ID: navigation.getParam("Key", "error") });
+    // const { navigation } = this.props;
+    // this.setState({ Selected: navigation.getParam("Selected", "error"), ID: navigation.getParam("Key", "error") });
+    // this.setState({ Selected:this.props.Selected, ID: this.props.ID });
   }
   render() {
     return (
       <Container>
         <Content>
           <Button transparent block style={{margin:15}}>
-            <Text style={{color:'#000000'}}>{this.state.Selected.name}</Text>
+            <Text style={{color:'#000000'}}>{this.props.Selected.name}</Text>
           </Button>
           <ListItem icon>
             <Left>
@@ -31,7 +32,7 @@ export default class Details extends Component {
               <Text>Subject ID :</Text>
             </Body>
             <Right>
-              <Text>{this.state.ID}</Text>
+              <Text>{this.props.ID}</Text>
             </Right>
           </ListItem>
           <ListItem icon>
@@ -44,13 +45,13 @@ export default class Details extends Component {
               <Text>Teacher :</Text>
             </Body>
             <Right>
-              <Text>{this.state.Selected.teacher}</Text>
+              <Text>{this.props.Selected.teacher}</Text>
             </Right>
           </ListItem>
           <Card style={{marginTop:15}}>
             <CardItem>
               <Body>
-              <Text >{this.state.Selected.detail}</Text>
+              <Text >{this.props.Selected.detail}</Text>
               </Body>
             </CardItem>
           </Card>
