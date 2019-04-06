@@ -8,16 +8,16 @@ export default class Details2 extends Component {
     return (
       <Container>
         <Tabs renderTabBar={()=> <ScrollableTab />}>
-          <Tab heading="Tab1">
+          <Tab heading="Details">
             {/* <Tab1 /> */}
           </Tab>
-          <Tab heading="Tab2">
+          <Tab heading="Grade">
             {/* <Tab2 /> */}
           </Tab>
-          <Tab heading="Tab3">
+          <Tab heading="Comment">
             {/* <Tab3 /> */}
           </Tab>
-          <Tab heading="Tab4">
+          <Tab heading="Rating">
             {/* <Tab4 /> */}
           </Tab>
           <Tab heading="Tab5">
