@@ -11,6 +11,7 @@ import Home from './Components/Home'
 import Details from './Components/Details'
 import Subject from './Components/Subject'
 import Teacher from './Components/Teacher'
+import Details2 from './Components/Details2'
 
 const AppNavigator = createStackNavigator({
     App: {
@@ -22,12 +23,15 @@ const AppNavigator = createStackNavigator({
     }, Home: {
         screen: Home
     }, Details: {
-        screen: Details
+        screen: Details2
     }, Subject:{
         screen: Subject
     }, Teacher:{
         screen: Teacher
     }
+    
+
+    
 },
     {
         initialRouteName: "App"
