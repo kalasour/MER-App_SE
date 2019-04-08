@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Tab, Tabs, ScrollableTab } from 'native-base';
+import Rate from './star'
 // import Tab1 from './tabOne';
 
 // import Tab5 from './tabFive';
@@ -18,7 +19,7 @@ export default class Details2 extends Component {
             {/* <Tab3 /> */}
           </Tab>
           <Tab heading="Rating">
-            {/* <Tab4 /> */}
+            <Rate/>
           </Tab>
           <Tab heading="Tab5">
             {/* <Tab5 /> */}
