@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import { Container, Header, Tab, Tabs, ScrollableTab } from 'native-base';
-import Rate from './star'
+import Rate from './Star'
+import Details from './Details'
 // import Tab1 from './tabOne';
-=======
-import { Container, Header, Tab, Tabs, ScrollableTab,Text } from 'native-base';
-import Details from './Details';
->>>>>>> beb7f59f04db3c13ad86fd71ca02291b3c2a0416
 
 // import Tab5 from './tabFive';
 export default class Details2 extends Component {
@@ -35,7 +31,7 @@ export default class Details2 extends Component {
             {/* <Tab3 /> */}
           </Tab>
           <Tab heading="Rating">
-            <Rate/>
+            <Rate />
           </Tab>
           <Tab heading="Tab5">
             {/* <Tab5 /> */}
