@@ -2,17 +2,36 @@ import React, { Component } from 'react';
 import { Image } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid'
 import { Container, Header, Content, Form, Item, Input, Button, Label, Left, Right, Body, Title, Text } from 'native-base';
-import {
-  StackActions,
-  NavigationActions
-} from "react-navigation";
+import { createDrawerNavigator, createAppContainer, StackActions, NavigationActions } from "react-navigation";
+import * as firebase from 'firebase/app'
+import "firebase/auth";
 export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      Firstname: "",
+      Lastname: "",
+      Email: "",
+      Password: "",
+
     };
   }
-
+  Register = (Firstname) => {
+    firebase.auth().createUserWithEmailAndPassword(this.state.Email, this.state.Password).catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert(errorMessage)
+      // ...
+    }).then(() => {
+      firebase.auth().currentUser.updateProfile({displayName:Firstname})
+      // const resetAction = StackActions.reset({
+      //   index: 0,
+      //   actions: [NavigationActions.navigate({ routeName: "Login" })]
+      // });
+      // this.props.navigation.dispatch(resetAction);
+    });
+  }
   render() {
     return (
       <Container>
@@ -31,30 +50,26 @@ export default class Register extends Component {
           <Form>
             <Item floatingLabel>
               <Label>Firstname</Label>
-              <Input />
+              <Input value={this.state.Firstname} onChangeText={(Text) => { this.setState({ Firstname: Text }) }} />
             </Item>
 
             <Item floatingLabel>
               <Label>Lastname</Label>
-              <Input />
+              <Input value={this.state.Lastname} onChangeText={(Text) => { this.setState({ Lastname: Text }) }} />
             </Item>
 
             <Item floatingLabel>
-              <Label>Username</Label>
-              <Input />
+              <Label>Email</Label>
+              <Input value={this.state.Email} onChangeText={(Text) => { this.setState({ Email: Text }) }} />
             </Item>
 
             <Item floatingLabel>
               <Label>Password</Label>
-              <Input />
+              <Input value={this.state.Password} secureTextEntry={true} onChangeText={(Text) => { this.setState({ Password: Text }) }} />
             </Item>
 
             <Button style={{ alignSelf: 'center', marginTop: 10 }} primary onPress={() => {
-              const resetAction = StackActions.reset({
-                index: 0,
-                actions: [NavigationActions.navigate({ routeName: "Home" })]
-              });
-              this.props.navigation.dispatch(resetAction);
+              this.Register(this.state.Firstname)
             }}><Text> Sign up </Text></Button>
           </Form>
 

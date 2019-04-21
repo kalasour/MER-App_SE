@@ -13,7 +13,16 @@ import {
   StackActions,
   NavigationActions
 } from "react-navigation";
-
+import * as firebase from 'firebase/app'
+var config = {
+  apiKey: "AIzaSyD7usezWxYIrAgLzCAMnBCtBPxUCH7Q37Q",
+  authDomain: "mer-se.firebaseapp.com",
+  databaseURL: "https://mer-se.firebaseio.com",
+  projectId: "mer-se",
+  storageBucket: "mer-se.appspot.com",
+  messagingSenderId: "920413549139"
+};
+firebase.initializeApp(config);
 
 export default class App extends Component {
   static navigationOptions = { title: 'Mer', header: null };

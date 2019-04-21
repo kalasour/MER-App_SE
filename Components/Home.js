@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import { Container, Header, Item, Input, Icon, Button, Text, Content, Card, CardItem, Col, Row, Left, Thumbnail, Body, Right } from 'native-base';
-import { createDrawerNavigator, createAppContainer } from "react-navigation";
+import { Container, Header, Item, Input, Icon, Button, Text, Content, Card, CardItem,Spinner, Col, Row, Left, Thumbnail, Body, Right, View } from 'native-base';
+import { createDrawerNavigator, createAppContainer, StackActions, NavigationActions } from "react-navigation";
 import Teacher from './Teacher'
 import Subject from './Subject'
+import Profile from './Profile'
 import subject from './resources/subject.json'
-
+import * as firebase from 'firebase/app'
+import "firebase/auth";
 class Home extends Component {
   static navigationOptions = {
     title: 'Home', header: null, drawerIcon: ({ tintColor }) => {
@@ -18,6 +20,28 @@ class Home extends Component {
     };
   }
 
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+        // alert(email)
+
+      } else {
+        const resetAction = StackActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({ routeName: "Login" })]
+        });
+        this.props.navigation.dispatch(resetAction);
+      }
+    })
+  }
   render() {
 
     ListSubject = Object.keys(subject).map(key => {
@@ -35,39 +59,40 @@ class Home extends Component {
       //   -1
       // )
       return (
-        <Card key={key}  >
-          <CardItem>
-            <Left>
-              <Thumbnail source={require('./resources/logo.png')} />
+          
+          <Card key={key}  >
+            <CardItem>
+              <Left>
+                <Thumbnail source={require('./resources/logo.png')} />
+                <Body>
+                  <Text>{subject[key].name}</Text>
+                  <Text note>{key}</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem cardBody>
+              <Image source={require('./resources/logo.png')} style={{ height: 200, width: null, flex: 1 }} />
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Button transparent>
+                  <Icon active name="thumbs-up" />
+                  <Text>{parseInt(Math.random() * 20)} Likes</Text>
+                </Button>
+              </Left>
               <Body>
-                <Text>{subject[key].name}</Text>
-                <Text note>{key}</Text>
+                <Button transparent>
+                  <Icon style={{ color: '#f9ca2b' }} name="star" type="AntDesign" />
+                  <Text>{(Math.random() * 5).toPrecision(2)}</Text>
+                </Button>
               </Body>
-            </Left>
-          </CardItem>
-          <CardItem cardBody>
-            <Image source={require('./resources/logo.png')} style={{ height: 200, width: null, flex: 1 }} />
-          </CardItem>
-          <CardItem>
-            <Left>
-              <Button transparent>
-                <Icon active name="thumbs-up" />
-                <Text>{parseInt(Math.random() * 20)} Likes</Text>
-              </Button>
-            </Left>
-            <Body>
-              <Button transparent>
-                <Icon style={{ color: '#f9ca2b' }} name="star" type="AntDesign" />
-                <Text>{(Math.random() * 5).toPrecision(2)}</Text>
-              </Button>
-            </Body>
-            <Right>
-              <Button bordered info onPress={() => this.props.navigation.navigate("Details", {
-                Selected: subject[key], Key: key
-              })}><Text>See more</Text></Button>
-            </Right>
-          </CardItem>
-        </Card>
+              <Right>
+                <Button bordered info onPress={() => this.props.navigation.navigate("Details", {
+                  Selected: subject[key], Key: key
+                })}><Text>See more</Text></Button>
+              </Right>
+            </CardItem>
+          </Card>
       );
     });
     return (
@@ -98,6 +123,9 @@ const MyDrawerNavigator = createDrawerNavigator({
   },
   Teacher: {
     screen: Teacher,
+  },
+  Profile: {
+    screen: Profile,
   },
   // Details: {
   //   screen: Details,
