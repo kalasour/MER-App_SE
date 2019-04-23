@@ -1,27 +1,41 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
-import { Container, Header, Item, Input, Icon, Button, Text, Content, Card, CardItem,Spinner, Col, Row, Left, Thumbnail, Body, Right, View } from 'native-base';
+import { Image, YellowBox } from 'react-native';
+import { Container, Header, Item, Input, Icon, Button, Text, Content, Card, CardItem, Spinner, Col, Row, Left, Thumbnail, Body, Right, View } from 'native-base';
 import { createDrawerNavigator, createAppContainer, StackActions, NavigationActions } from "react-navigation";
 import Teacher from './Teacher'
 import Subject from './Subject'
 import Profile from './Profile'
-import subject from './resources/subject.json'
+import Loading from './Loading'
+// import subject from './resources/subject.json'
 import * as firebase from 'firebase/app'
 import "firebase/auth";
+import "firebase/database";
+YellowBox.ignoreWarnings(['Setting a timer']);
 class Home extends Component {
   static navigationOptions = {
     title: 'Home', header: null, drawerIcon: ({ tintColor }) => {
       return (<Icon name="home" style={{ width: 30, color: tintColor }} type="AntDesign" />);
     }
   };
+
   constructor(props) {
     super(props);
     this.state = {
+      Subject: {},
+      Loading: true,
     };
   }
-
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
+  GetData = async () => {
+    await firebase
+      .database()
+      .ref("Subject")
+      .on("value", snapshot => {
+        this.setState({
+          Subject: snapshot.val()
+          , Loading: false
+        });
+      });
+    await firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
         var displayName = user.displayName;
@@ -41,10 +55,14 @@ class Home extends Component {
         this.props.navigation.dispatch(resetAction);
       }
     })
+
+  };
+  componentDidMount() {
+    this.GetData();
   }
   render() {
 
-    ListSubject = Object.keys(subject).map(key => {
+    ListSubject = Object.keys(this.state.Subject).map(key => {
       // if (
       //   Item.value.Detail.toLowerCase().search(
       //     this.state.SearchField.toLowerCase()
@@ -59,44 +77,45 @@ class Home extends Component {
       //   -1
       // )
       return (
-          
-          <Card key={key}  >
-            <CardItem>
-              <Left>
-                <Thumbnail source={require('./resources/logo.png')} />
-                <Body>
-                  <Text>{subject[key].name}</Text>
-                  <Text note>{key}</Text>
-                </Body>
-              </Left>
-            </CardItem>
-            <CardItem cardBody>
-              <Image source={require('./resources/logo.png')} style={{ height: 200, width: null, flex: 1 }} />
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Button transparent>
-                  <Icon active name="thumbs-up" />
-                  <Text>{parseInt(Math.random() * 20)} Likes</Text>
-                </Button>
-              </Left>
+
+        <Card key={key}  >
+          <CardItem>
+            <Left>
+              <Thumbnail source={require('./resources/logo.png')} />
               <Body>
-                <Button transparent>
-                  <Icon style={{ color: '#f9ca2b' }} name="star" type="AntDesign" />
-                  <Text>{(Math.random() * 5).toPrecision(2)}</Text>
-                </Button>
+                <Text>{this.state.Subject[key].name}</Text>
+                <Text note>{key}</Text>
               </Body>
-              <Right>
-                <Button bordered info onPress={() => this.props.navigation.navigate("Details", {
-                  Selected: subject[key], Key: key
-                })}><Text>See more</Text></Button>
-              </Right>
-            </CardItem>
-          </Card>
+            </Left>
+          </CardItem>
+          <CardItem cardBody>
+            <Image source={require('./resources/logo.png')} style={{ height: 200, width: null, flex: 1 }} />
+          </CardItem>
+          <CardItem>
+            <Left>
+              <Button transparent>
+                <Icon active name="thumbs-up" />
+                <Text>{parseInt(Math.random() * 20)} Likes</Text>
+              </Button>
+            </Left>
+            <Body>
+              <Button transparent>
+                <Icon style={{ color: '#f9ca2b' }} name="star" type="AntDesign" />
+                <Text>{(Math.random() * 5).toPrecision(2)}</Text>
+              </Button>
+            </Body>
+            <Right>
+              <Button bordered info onPress={() => this.props.navigation.navigate("Details", {
+                Selected: this.state.Subject[key], Key: key
+              })}><Text>See more</Text></Button>
+            </Right>
+          </CardItem>
+        </Card>
       );
     });
     return (
       <Container>
+        <Loading Loading={this.state.Loading}></Loading>
         <Header searchBar rounded>
           <Item>
             <Icon name="ios-search" />

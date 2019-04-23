@@ -14,6 +14,7 @@ import {
   NavigationActions
 } from "react-navigation";
 import * as firebase from 'firebase/app'
+
 var config = {
   apiKey: "AIzaSyD7usezWxYIrAgLzCAMnBCtBPxUCH7Q37Q",
   authDomain: "mer-se.firebaseapp.com",

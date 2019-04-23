@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Container, Header, Tab, Tabs, ScrollableTab } from 'native-base';
 import Rate from './Star'
 import Details from './Details'
+import * as firebase from 'firebase/app'
+import "firebase/auth";
+import "firebase/database";
 // import Tab1 from './tabOne';
 
 // import Tab5 from './tabFive';
