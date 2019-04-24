@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Tab, Tabs, ScrollableTab } from 'native-base';
 import Rate from './Star'
 import Details from './Details'
+import Grade from './Grade'
 import * as firebase from 'firebase/app'
 import "firebase/auth";
 import "firebase/database";
@@ -28,7 +29,7 @@ export default class Details2 extends Component {
             <Details Selected={this.state.Selected}  ID={this.state.ID} />
           </Tab>
           <Tab heading="Grade">
-            {/* <Tab2 /> */}
+           <Grade />
           </Tab>
           <Tab heading="Comment">
             {/* <Tab3 /> */}

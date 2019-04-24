@@ -5,13 +5,13 @@ export default class Star extends Component {
   render() {
     return (
       <Container>
-        <Header>
-        <Left/>
-          <Body>
+      <Header>
+         <Left/>
+        <Body>
             <Title>Rate It!</Title>
           </Body>
           <Right />
-        </Header>
+      </Header> 
         
         <Content>
           <Card>
