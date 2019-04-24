@@ -14,7 +14,9 @@ import {
   NavigationActions
 } from "react-navigation";
 import * as firebase from 'firebase/app'
-
+import "firebase/auth";
+import "firebase/database";
+import Loading from './Components/Loading'
 var config = {
   apiKey: "AIzaSyD7usezWxYIrAgLzCAMnBCtBPxUCH7Q37Q",
   authDomain: "mer-se.firebaseapp.com",
@@ -34,25 +36,36 @@ export default class App extends Component {
     };
   }
   componentDidMount() {
-    if (this.state.logged) {
-      const resetAction = StackActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({ routeName: "Home" })]
-      });
-      this.props.navigation.dispatch(resetAction);
-    }
-    else {
-      const resetAction = StackActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({ routeName: "Login" })]
-      });
-      this.props.navigation.dispatch(resetAction);
-    }
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        var displayName = user.displayName;
+        var email = user.email;
+        var emailVerified = user.emailVerified;
+        var photoURL = user.photoURL;
+        var isAnonymous = user.isAnonymous;
+        var uid = user.uid;
+        var providerData = user.providerData;
+        const resetAction = StackActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({ routeName: "Home" })]
+        });
+        this.props.navigation.dispatch(resetAction);
+
+      } else {
+        const resetAction = StackActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({ routeName: "Login" })]
+        });
+        this.props.navigation.dispatch(resetAction);
+      }
+    })
   }
   render() {
 
     return (
       <Container  >
+      <Loading></Loading>
         <Header full />
         <Content >
           <Container style={{ alignSelf: 'center', alignItems: 'center' }} >

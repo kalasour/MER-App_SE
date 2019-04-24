@@ -24,7 +24,7 @@ export default class Register extends Component {
       alert(errorMessage)
       // ...
     }).then(() => {
-      firebase.auth().currentUser.updateProfile({displayName:Firstname})
+      if(firebase.auth().currentUser!=null)firebase.auth().currentUser.updateProfile({displayName:Firstname})
       // const resetAction = StackActions.reset({
       //   index: 0,
       //   actions: [NavigationActions.navigate({ routeName: "Login" })]
