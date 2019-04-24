@@ -32,7 +32,7 @@ export default class Details2 extends Component {
       count+=element
       i++
     });
-    return (sum/count).toFixed(2)
+    return (sum/((count==0)?1:count)).toFixed(2)
   }
   render() {
     return (
