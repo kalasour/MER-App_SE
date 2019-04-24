@@ -11,6 +11,8 @@
     "native-base": "^2.12.1",
     "react": "16.8.3",
     "react-native": "0.59.1",
+    "react-native-responsive-linechart": "^1.5.1",
+    "react-native-svg": "^9.4.0",
     "react-navigation": "^3.4.1"
   },
   "devDependencies": {
