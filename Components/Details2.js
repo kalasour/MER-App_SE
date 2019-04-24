@@ -52,9 +52,6 @@ export default class Details2 extends Component {
           <Tab heading="Rating">
             <Rate Selected={this.state.Selected} ID={this.state.ID} />
           </Tab>
-          <Tab heading="Tab5">
-            {/* <Tab5 /> */}
-          </Tab>
         </Tabs>
       </Container>
     );

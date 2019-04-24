@@ -23,6 +23,7 @@ class Home extends Component {
     this.state = {
       Subject: {},
       Loading: true,
+      Search:"",
     };
   }
   GetData = async () => {
@@ -63,19 +64,21 @@ class Home extends Component {
   render() {
 
     ListSubject = Object.keys(this.state.Subject).map(key => {
-      // if (
-      //   Item.value.Detail.toLowerCase().search(
-      //     this.state.SearchField.toLowerCase()
-      //   ) != -1 ||
-      //   Item.value.BE_ID.toLowerCase().search(
-      //     this.state.SearchField.toLowerCase()
-      //   ) != -1 ||
-      //   Item.value.JM_ID.toLowerCase().search(
-      //     this.state.SearchField.toLowerCase()
-      //   ) != -1 ||
-      //   Item.key.toLowerCase().search(this.state.SearchField.toLowerCase()) !=
-      //   -1
-      // )
+      if (
+        this.state==""||
+        key.toLowerCase().search(
+          this.state.Search.toLowerCase()
+        ) != -1 ||
+        this.state.Subject[key].name.toLowerCase().search(
+          this.state.Search.toLowerCase()
+        ) != -1 ||
+        this.state.Subject[key].detail.toLowerCase().search(
+          this.state.Search.toLowerCase()
+        ) != -1 ||
+        this.state.Subject[key].teacher.toLowerCase().search(
+          this.state.Search.toLowerCase()
+        ) != -1 
+      )
       return (
 
         <Card key={key}  >
@@ -119,8 +122,7 @@ class Home extends Component {
         <Header searchBar rounded>
           <Item>
             <Icon name="ios-search" />
-            <Input placeholder="Search" />
-            <Icon name="ios-people" />
+            <Input placeholder="Search" value={this.state.Search} onChangeText={(Text) => { this.setState({ Search: Text }) }} />
           </Item>
           <Button transparent>
             <Text>Search</Text>
