@@ -18,7 +18,7 @@ export default class Teacher extends Component {
       <Container>
           
         <Content>
-          <Text>  A</Text>
+          <Text>    A</Text>
           <Card>
             <CardItem  style={{backgroundColor:'#87cefa'}}>
               <Icon active name="chalkboard-teacher" type="FontAwesome5" />
@@ -31,28 +31,28 @@ export default class Teacher extends Component {
               <Text> Arnan Sipitakiat </Text>
             </CardItem >
           </Card>
-          <Text>  C</Text>
+          <Text>    C</Text>
           <Card>
             <CardItem style={{backgroundColor:'#87cefa'}}>
               <Icon active name="chalkboard-teacher" type="FontAwesome5" />
               <Text> Chinawat Isradisaikul </Text>
             </CardItem>
           </Card>
-          <Text>  D</Text>
+          <Text>    D</Text>
           <Card>
             <CardItem style={{backgroundColor:'#87cefa'}}>
               <Icon active name="chalkboard-teacher" type="FontAwesome5" />
               <Text> Dome Potikanond </Text>
             </CardItem>
           </Card>
-          <Text>  J</Text>
+          <Text>   J</Text>
           <Card>
             <CardItem  style={{backgroundColor:'#87cefa'}}>
               <Icon active name="chalkboard-teacher" type="FontAwesome5" />
               <Text> Juggapong Natwichai </Text>
             </CardItem>
           </Card>
-          <Text>  K</Text>
+          <Text>    K</Text>
           <Card>
             <CardItem  style={{backgroundColor:'#87cefa'}}>
               <Icon active name="chalkboard-teacher" type="FontAwesome5" />
@@ -65,14 +65,14 @@ export default class Teacher extends Component {
               <Text> Kenneth Cosh </Text>
             </CardItem>
           </Card>
-          <Text>  L</Text>
+          <Text>    L</Text>
           <Card>
             <CardItem style={{backgroundColor:'#87cefa'}}>
               <Icon active name="chalkboard-teacher" type="FontAwesome5" />
               <Text> Lachana Ramingwong </Text>
             </CardItem>
           </Card>
-          <Text>  N</Text>
+          <Text>    N</Text>
           <Card>
             <CardItem style={{backgroundColor:'#87cefa'}}>
               <Icon active name="chalkboard-teacher" type="FontAwesome5" />
@@ -85,7 +85,7 @@ export default class Teacher extends Component {
               <Text> Narissara Eiamkanitchat </Text>
             </CardItem>
           </Card>
-          <Text>  P</Text>
+          <Text>    P</Text>
           <Card>
             <CardItem  style={{backgroundColor:'#87cefa'}}>
               <Icon active name="chalkboard-teacher" type="FontAwesome5" />
@@ -104,7 +104,7 @@ export default class Teacher extends Component {
               <Text> Patiwet Wuttisarnwattana </Text>
             </CardItem>
           </Card>
-          <Text>  S</Text>
+          <Text>    S</Text>
           <Card>
             <CardItem  style={{backgroundColor:'#87cefa'}}>
               <Icon active name="chalkboard-teacher" type="FontAwesome5" />
@@ -117,14 +117,14 @@ export default class Teacher extends Component {
               <Text> Sansanee Auephanwiriyakul </Text>
             </CardItem>
           </Card>
-          <Text>  T</Text>
+          <Text>    T</Text>
           <Card>
             <CardItem  style={{backgroundColor:'#87cefa'}}>
               <Icon active name="chalkboard-teacher" type="FontAwesome5" />
               <Text> Trasapong Thaiupathump </Text>
             </CardItem>
           </Card>
-          <Text>  Y</Text>
+          <Text>    Y</Text>
           <Card>
             <CardItem  style={{backgroundColor:'#87cefa'}}>
               <Icon active name="chalkboard-teacher" type="FontAwesome5" />
