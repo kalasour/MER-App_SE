@@ -18,6 +18,7 @@ export default class Profile extends Component {
       Password: "",
     };
   }
+
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -45,6 +46,7 @@ export default class Profile extends Component {
     return (
       <Container>
         <Content>
+        
           <Form>
             <Item floatingLabel>
               <Label>Firstname</Label>
