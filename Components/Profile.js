@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Card, CardItem, Text, Icon, Right, Button,Form,Item,Label,Input } from 'native-base';
+import { Col, Row, Grid } from 'react-native-easy-grid'
+import { Container, Header, Content, Card, CardItem, Text, Icon, Right, Button, Form, Item, Label, Input } from 'native-base';
 import { createDrawerNavigator, createAppContainer, StackActions, NavigationActions } from "react-navigation";
 import * as firebase from 'firebase/app'
 import "firebase/auth";
@@ -58,25 +59,30 @@ export default class Profile extends Component {
 
             <Item floatingLabel>
               <Label>Email</Label>
-              <Input value={this.state.Email} onChangeText={(Text) => { this.setState({ Email: Text }) }} />
+              <Input disabled value={this.state.Email} onChangeText={(Text) => { this.setState({ Email: Text }) }} />
             </Item>
 
             {/* <Item floatingLabel>
               <Label>Password</Label>
               <Input value={this.state.Password} secureTextEntry={true} onChangeText={(Text) => { this.setState({ Password: Text }) }} />
             </Item> */}
-
-            <Button bordered full primary onPress={() => {
-              var user=firebase.auth().currentUser
-              user.updateProfile({displayName:this.state.Firstname})
-              user.updateEmail(this.state.Email)
-              alert('Updated')
-              // firebase.auth().currentUser.updatePassword(this.state.Password)
-            }}><Text> Save </Text></Button>
           </Form>
-          <Button bordered full info onPress={() => {
-            firebase.auth().signOut()
-          }}><Text>Logout</Text></Button>
+          <Row >
+            <Col >
+              <Button style={{alignSelf:"center"}} bordered primary onPress={() => {
+                var user = firebase.auth().currentUser
+                user.updateProfile({ displayName: this.state.Firstname })
+                user.updateEmail(this.state.Email)
+                alert('Updated')
+                // firebase.auth().currentUser.updatePassword(this.state.Password)
+              }}><Text> Save </Text></Button>
+            </Col>
+            <Col >
+              <Button style={{alignSelf:"center"}} bordered danger onPress={() => {
+                firebase.auth().signOut()
+              }}><Text>Logout</Text></Button>
+            </Col>
+          </Row>
         </Content>
       </Container>
     );

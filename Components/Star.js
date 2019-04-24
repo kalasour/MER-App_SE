@@ -79,12 +79,7 @@ export default class Star extends Component {
               <Image source={{uri: 'Image URL'}} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
           </Card>
-          <Content padder>
-          <Text Styled='bold'>Comment </Text>
-          <Form>
-            <Textarea rowSpan={5} bordered placeholder="Add your comment here." />
-          </Form>
-        </Content>
+          
           
         </Content>
       </Container>
