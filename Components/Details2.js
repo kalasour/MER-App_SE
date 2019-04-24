@@ -32,7 +32,7 @@ export default class Details2 extends Component {
       count+=element
       i++
     });
-    return (sum/count).toFixed(2)
+    return (sum/((count==0)?1:count)).toFixed(2)
   }
   render() {
     return (
@@ -44,12 +44,13 @@ export default class Details2 extends Component {
           <Tab heading="Grade">
           <Text style={{textAlign:"center",fontSize:20,margin:10}}>GPA  :  {this.calGPA()}</Text>
             <Grade Selected={this.state.Selected} ID={this.state.ID}></Grade>
+            <Text> </Text>
           </Tab>
           <Tab heading="Comment">
             <Comment Selected={this.state.Selected} ID={this.state.ID}></Comment>
           </Tab>
           <Tab heading="Rating">
-            <Rate />
+            <Rate Selected={this.state.Selected} ID={this.state.ID} />
           </Tab>
           <Tab heading="Tab5">
             {/* <Tab5 /> */}
