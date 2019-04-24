@@ -69,13 +69,13 @@ export default class App extends Component {
         <Header full />
         <Content >
           <Container style={{ alignSelf: 'center', alignItems: 'center' }} >
-            <Button light onPress={() => { this.props.navigation.navigate('Home') }} ><Text> Home </Text></Button>
+            {/* <Button light onPress={() => { this.props.navigation.navigate('Home') }} ><Text> Home </Text></Button>
             <Button primary onPress={() => { this.props.navigation.navigate('Login') }}><Text> Login </Text></Button>
             <Button success onPress={() => { this.props.navigation.navigate('Register') }}><Text> Register </Text></Button>
             <Button info onPress={() => { this.props.navigation.navigate('Details') }}><Text> Details </Text></Button>
             <Button warning onPress={() => { this.props.navigation.navigate('Subject') }}><Text> Subject</Text></Button>
             <Button danger onPress={() => { this.props.navigation.navigate('Teacher') }}><Text> Teacher </Text></Button>
-            <Button dark><Text> undefine </Text></Button>
+            <Button dark><Text> undefine </Text></Button> */}
           </Container>
         </Content>
       </Container>

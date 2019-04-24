@@ -16,25 +16,6 @@ export default class Star extends Component {
     }
     return (
       <Container>
-
-      <Header>
-         <Left/>
-        <Body>
-            <Title>Rate It!</Title>
-          </Body>
-          <Right />
-      </Header> 
-        
-
-        <Header>
-          <Left />
-          <Body>
-            <Title>Rate It!</Title>
-          </Body>
-          <Right />
-        </Header>
-
-
         <Content>
           {
             Object.keys(this.props.Selected.rate).map((key, index) => (
