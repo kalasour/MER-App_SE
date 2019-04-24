@@ -13,6 +13,7 @@ import Subject from './Components/Subject'
 import Teacher from './Components/Teacher'
 import Details2 from './Components/Details2'
 
+
 const AppNavigator = createStackNavigator({
     App: {
         screen: App

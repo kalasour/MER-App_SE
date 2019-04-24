@@ -16,6 +16,16 @@ export default class Star extends Component {
     }
     return (
       <Container>
+
+      <Header>
+         <Left/>
+        <Body>
+            <Title>Rate It!</Title>
+          </Body>
+          <Right />
+      </Header> 
+        
+
         <Header>
           <Left />
           <Body>
@@ -23,6 +33,7 @@ export default class Star extends Component {
           </Body>
           <Right />
         </Header>
+
 
         <Content>
           {

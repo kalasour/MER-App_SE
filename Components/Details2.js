@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Header, Tab, Tabs, ScrollableTab,Text } from 'native-base';
 import Rate from './Star'
 import Details from './Details'
+import Grade from './Grade'
 import * as firebase from 'firebase/app'
 import "firebase/auth";
 import "firebase/database";
@@ -42,9 +43,13 @@ export default class Details2 extends Component {
             <Details Selected={this.state.Selected} ID={this.state.ID} />
           </Tab>
           <Tab heading="Grade">
+<<<<<<< HEAD
+           <Grade />
+=======
           <Text style={{textAlign:"center",fontSize:20,margin:10}}>GPA  :  {this.calGPA()}</Text>
             <Grade Selected={this.state.Selected} ID={this.state.ID}></Grade>
             <Text> </Text>
+>>>>>>> 8109089b82e5aef06e645d8f97066b040a73e6b5
           </Tab>
           <Tab heading="Comment">
             <Comment Selected={this.state.Selected} ID={this.state.ID}></Comment>
