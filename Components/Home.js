@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, YellowBox } from 'react-native';
+import { Image, YellowBox, TouchableHighlight } from 'react-native';
 import { Container, Header, Item, Input, Icon, Button, Text, Content, Card, CardItem, Spinner, Col, Row, Left, Thumbnail, Body, Right, View } from 'native-base';
 import { createDrawerNavigator, createAppContainer, StackActions, NavigationActions } from "react-navigation";
 import Teacher from './Teacher'
@@ -23,6 +23,7 @@ class Home extends Component {
     this.state = {
       Subject: {},
       Loading: true,
+      Search: "",
     };
   }
   GetData = async () => {
@@ -63,55 +64,57 @@ class Home extends Component {
   render() {
 
     ListSubject = Object.keys(this.state.Subject).map(key => {
-      // if (
-      //   Item.value.Detail.toLowerCase().search(
-      //     this.state.SearchField.toLowerCase()
-      //   ) != -1 ||
-      //   Item.value.BE_ID.toLowerCase().search(
-      //     this.state.SearchField.toLowerCase()
-      //   ) != -1 ||
-      //   Item.value.JM_ID.toLowerCase().search(
-      //     this.state.SearchField.toLowerCase()
-      //   ) != -1 ||
-      //   Item.key.toLowerCase().search(this.state.SearchField.toLowerCase()) !=
-      //   -1
-      // )
-      return (
+      if (
+        this.state == "" ||
+        key.toLowerCase().search(
+          this.state.Search.toLowerCase()
+        ) != -1 ||
+        this.state.Subject[key].name.toLowerCase().search(
+          this.state.Search.toLowerCase()
+        ) != -1 ||
+        this.state.Subject[key].detail.toLowerCase().search(
+          this.state.Search.toLowerCase()
+        ) != -1 ||
+        this.state.Subject[key].teacher.toLowerCase().search(
+          this.state.Search.toLowerCase()
+        ) != -1
+      )
+        return (
 
-        <Card key={key}  >
-          <CardItem>
-            <Left>
-              <Thumbnail source={require('./resources/logo.png')} />
+          <Card key={key}  >
+            <CardItem>
+              <Left>
+                <Thumbnail source={require('./resources/logo.png')} />
+                <Body>
+                  <Text>{this.state.Subject[key].name}</Text>
+                  <Text note>{key}</Text>
+                </Body>
+              </Left>
+            </CardItem>
+            <CardItem cardBody>
+              <Image source={require('./resources/logo.png')} style={{ height: 200, width: null, flex: 1 }} />
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Button transparent>
+                  <Icon active name="thumbs-up" />
+                  <Text>{parseInt(Math.random() * 20)} Likes</Text>
+                </Button>
+              </Left>
               <Body>
-                <Text>{this.state.Subject[key].name}</Text>
-                <Text note>{key}</Text>
+                <Button transparent>
+                  <Icon style={{ color: '#f9ca2b' }} name="star" type="AntDesign" />
+                  <Text>{(Math.random() * 5).toPrecision(2)}</Text>
+                </Button>
               </Body>
-            </Left>
-          </CardItem>
-          <CardItem cardBody>
-            <Image source={require('./resources/logo.png')} style={{ height: 200, width: null, flex: 1 }} />
-          </CardItem>
-          <CardItem>
-            <Left>
-              <Button transparent>
-                <Icon active name="thumbs-up" />
-                <Text>{parseInt(Math.random() * 20)} Likes</Text>
-              </Button>
-            </Left>
-            <Body>
-              <Button transparent>
-                <Icon style={{ color: '#f9ca2b' }} name="star" type="AntDesign" />
-                <Text>{(Math.random() * 5).toPrecision(2)}</Text>
-              </Button>
-            </Body>
-            <Right>
-              <Button bordered info onPress={() => this.props.navigation.navigate("Details", {
-                Selected: this.state.Subject[key], Key: key
-              })}><Text>See more</Text></Button>
-            </Right>
-          </CardItem>
-        </Card>
-      );
+              <Right>
+                <Button bordered info onPress={() => this.props.navigation.navigate("Details", {
+                  Selected: this.state.Subject[key], Key: key
+                })}><Text>See more</Text></Button>
+              </Right>
+            </CardItem>
+          </Card>
+        );
     });
     return (
       <Container>
@@ -119,8 +122,10 @@ class Home extends Component {
         <Header searchBar rounded>
           <Item>
             <Icon name="ios-search" />
-            <Input placeholder="Search" />
-            <Icon name="ios-people" />
+            <Input placeholder="Search" value={this.state.Search} onChangeText={(Text) => { this.setState({ Search: Text }) }} />
+            <TouchableHighlight disabled={this.state.Search==''} onPress={() => this.setState({ Search: '' })}>
+              <Icon name="circle-with-cross" type="Entypo" />
+            </TouchableHighlight>
           </Item>
           <Button transparent>
             <Text>Search</Text>

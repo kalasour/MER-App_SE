@@ -26,7 +26,7 @@ export default class Grade extends Component {
             },
             yAxis: {
                 visible: true,
-                labelFormatter: v => String(v) + " peoples"
+                labelFormatter: v => String(v) + " p."
             },
             xAxis: {
                 visible: true
