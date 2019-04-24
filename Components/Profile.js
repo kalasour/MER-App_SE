@@ -67,6 +67,8 @@ export default class Profile extends Component {
               <Input value={this.state.Password} secureTextEntry={true} onChangeText={(Text) => { this.setState({ Password: Text }) }} />
             </Item> */}
           </Form>
+
+
           <Row >
             <Col >
               <Button style={{alignSelf:"center"}} bordered primary onPress={() => {
@@ -83,6 +85,7 @@ export default class Profile extends Component {
               }}><Text>Logout</Text></Button>
             </Col>
           </Row>
+          
         </Content>
       </Container>
     );
