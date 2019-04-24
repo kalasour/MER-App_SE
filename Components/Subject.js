@@ -16,6 +16,7 @@ export default class Subject extends Component {
     render() {
     return (
       <Container>
+        <Header></Header>
         
         <Content>
           <Card>

@@ -16,6 +16,7 @@ export default class Teacher extends Component {
   render() {
     return (
       <Container>
+        <Header></Header>
           
         <Content>
           <Text>    A</Text>
