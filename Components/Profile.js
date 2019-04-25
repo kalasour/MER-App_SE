@@ -7,6 +7,7 @@ import * as firebase from 'firebase/app'
 import {
   TouchableHighlight
 } from 'react-native';
+import "firebase/database"
 import "firebase/auth";
 export default class Profile extends Component {
   static navigationOptions = {
@@ -17,6 +18,7 @@ export default class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: '',
       Firstname: "",
       Lastname: "",
       Email: "",
@@ -47,7 +49,7 @@ export default class Profile extends Component {
         var uid = user.uid;
         var providerData = user.providerData;
         // alert(email)
-        this.setState({ Firstname: displayName, Email: email, PicLink: photoURL })
+        this.setState({ Firstname: displayName, Email: email, PicLink: photoURL, uid: uid })
 
       } else {
         const resetAction = StackActions.reset({
@@ -79,9 +81,9 @@ export default class Profile extends Component {
                     }}><Thumbnail large source={{ uri: uri }} /></TouchableHighlight>
                 ))}
               </Row>
-                <Button full style={{alignSelf:'center'}} icon danger style={{ margin: 20 }} onPress={() => this.setState({ show: false })}>
-                  <Icon name="circle-with-cross" type="Entypo" />
-                </Button>
+              <Button full style={{ alignSelf: 'center' }} icon danger style={{ margin: 20 }} onPress={() => this.setState({ show: false })}>
+                <Icon name="circle-with-cross" type="Entypo" />
+              </Button>
             </Content>
           </Container>
         </Modal>
@@ -121,10 +123,16 @@ export default class Profile extends Component {
 
           <Row style={{ margin: 20 }}>
             <Col >
-              <Button style={{ alignSelf: "center" }} bordered primary onPress={() => {
+              <Button style={{ alignSelf: "center" }} bordered primary onPress={async () => {
                 var user = firebase.auth().currentUser
                 user.updateProfile({ displayName: this.state.Firstname, photoURL: this.state.PicLink })
                 user.updateEmail(this.state.Email)
+                await firebase
+                  .database()
+                  .ref("Users")
+                  .child(this.state.uid).update({
+                    displayName: this.state.Firstname, photoURL: this.state.PicLink, Email: this.state.Email
+                  })
                 alert('Updated')
                 // firebase.auth().currentUser.updatePassword(this.state.Password)
               }}><Text> Save </Text></Button>

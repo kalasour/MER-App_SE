@@ -14,7 +14,8 @@ export default class Comment extends Component {
             Loading: false,
             name: "",
             Subject: {},
-            CM: {}
+            CM: {},
+            Users: {}
         };
     }
     Submit = async () => {
@@ -33,7 +34,14 @@ export default class Comment extends Component {
     async componentDidMount() {
         if (firebase.auth().currentUser !== null)
             await this.setState({ uid: firebase.auth().currentUser.uid, name: firebase.auth().currentUser.displayName })
-
+        await firebase
+            .database()
+            .ref("Users")
+            .on("value", snapshot => {
+                this.setState({
+                    Users: snapshot.val()
+                });
+            });
         await firebase
             .database()
             .ref("Subject")
@@ -44,6 +52,7 @@ export default class Comment extends Component {
                     CM: snapshot.val()[this.props.ID].comments
                 });
             });
+
     }
 
     compare = (a, b) => {
@@ -57,21 +66,25 @@ export default class Comment extends Component {
     }
     render() {
         return (
-            <Content padder style={{backgroundColor:'#87cefa'}}>
+            <Content padder style={{ backgroundColor: '#87cefa' }}>
                 <Loading Loading={this.state.Loading}></Loading>
-                {Object.values(((this.state.CM==null)?{}:this.state.CM)).sort(this.compare).map((item, index) => (
-                    <Card  key={index}>
+                {Object.values(((this.state.CM == null) ? {} : this.state.CM)).sort(this.compare).map((item, index) => (
+                    <Card key={index}>
                         <CardItem header>
-                            <Thumbnail  small source={{ uri: "https://facebook.github.io/react-native/docs/assets/favicon.png" }} />
+                            <Thumbnail small source={{
+                                uri: (this.state.Users == null) ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Image_of_none.svg/819px-Image_of_none.svg.png' :
+                                    ((this.state.Users[item.uid] == null) ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Image_of_none.svg/819px-Image_of_none.svg.png' :
+                                        (((this.state.Users[item.uid].photoURL == null || this.state.Users[item.uid].photoURL == '') ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Image_of_none.svg/819px-Image_of_none.svg.png' : this.state.Users[item.uid].photoURL)))
+                            }} />
                             <Text>
-                                {"  " + item.name + ' - '}
+                                {"  " + ((this.state.Users == null) ? item.uid : ((this.state.Users[item.uid] == null) ? item.uid : this.state.Users[item.uid].displayName)) + ' - '}
                             </Text>
 
                             <Text style={{ fontSize: 12 }}>
                                 {item.time}
                             </Text>
                         </CardItem>
-                        <CardItem style={{backgroundColor:'#faebd7'}}  >
+                        <CardItem style={{ backgroundColor: '#faebd7' }}  >
                             <Body >
                                 <Text>
                                     {item.detail}
@@ -81,11 +94,11 @@ export default class Comment extends Component {
                     </Card>
                 ))}
                 <Text Styled='bold'>Comment </Text>
-                <Form style={{backgroundColor:'#faebd7'}}>
+                <Form style={{ backgroundColor: '#faebd7' }}>
                     <Textarea value={this.state.comment} onChangeText={(Text) => { this.setState({ comment: Text }) }} rowSpan={5} bordered placeholder="Add your comment here." />
 
                 </Form>
-                <Button onPress={() => this.Submit()} info style={{ margin: 10 ,backgroundColor:'#00008b'}}><Text>Submit</Text></Button>
+                <Button onPress={() => this.Submit()} info style={{ margin: 10, backgroundColor: '#00008b' }}><Text>Submit</Text></Button>
             </Content>
         );
     }
