@@ -23,19 +23,22 @@ export default class Grade extends Component {
             },
             yAxis: {
                 visible: true,
-                labelFormatter: v => String(v) + " p."
+                labelFormatter: v => String(v) + " p.",
+                backgroundColor: "#a8d8ea",
             },
             xAxis: {
-                visible: true
+                visible: true,
             },
             grid: {
-                stepSize: 1
+                stepSize: 1,
             },
             insetY: 10,
-            insetX: 10
+            insetX: 10,
+            backgroundColor: "#a8d8ea"
         };
         return (
-                <LineChart style={{ flex: 1 }} config={config} data={ Object.values(this.props.Selected.grade)} xLabels={Object.keys(this.props.Selected.grade)} />
+                <LineChart style={{ flex: 1}} config={config} data={ Object.values(this.props.Selected.grade)} xLabels={Object.keys(this.props.Selected.grade)} />
         );
     }
 }
+

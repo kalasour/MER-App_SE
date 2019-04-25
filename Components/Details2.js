@@ -66,11 +66,11 @@ export default class Details2 extends Component {
     return (
       <Container>
         <Loading Loading={this.state.Loading}></Loading>
-        <Tabs renderTabBar={() => <ScrollableTab />}>
-          <Tab heading="Details" >
+        <Tabs  renderTabBar={() => <ScrollableTab />} >
+          <Tab heading="Details" tabStyle={{backgroundColor:'#fcbad3'}}  activeTabStyle={{backgroundColor: '#fcbad3'}}>
             <Details Selected={this.state.Selected} ID={this.state.ID} />
           </Tab>
-          <Tab heading="Grade">
+          <Tab heading="Grade" tabStyle={{backgroundColor:'#fcbad3'}}  activeTabStyle={{backgroundColor: '#fcbad3'}}>
             <Text style={{ textAlign: "center", fontSize: 20, margin: 10 }}>GPA  :  {this.calGPA()}</Text>
             <Item picker>
               <Picker
@@ -97,10 +97,10 @@ export default class Details2 extends Component {
             <Grade Selected={this.state.Selected} ID={this.state.ID}></Grade>
             <Text></Text>
           </Tab>
-          <Tab heading="Comment">
+          <Tab heading="Comment" tabStyle={{backgroundColor:'#fcbad3'}}  activeTabStyle={{backgroundColor: '#fcbad3'}}>
             <Comment Selected={this.state.Selected} ID={this.state.ID}></Comment>
           </Tab>
-          <Tab heading="Rating">
+          <Tab heading="Rating" tabStyle={{backgroundColor:'#fcbad3'}}  activeTabStyle={{backgroundColor: '#fcbad3'}}>
             <Rate Selected={this.state.Selected} ID={this.state.ID} />
           </Tab>
         </Tabs>

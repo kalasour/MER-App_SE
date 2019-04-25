@@ -66,7 +66,7 @@ export default class Comment extends Component {
     }
     render() {
         return (
-            <Content padder style={{ backgroundColor: '#87cefa' }}>
+            <Content padder style={{backgroundColor:'#a8d8ea'}}>
                 <Loading Loading={this.state.Loading}></Loading>
                 {Object.values(((this.state.CM == null) ? {} : this.state.CM)).sort(this.compare).map((item, index) => (
                     <Card key={index}>

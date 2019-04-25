@@ -17,7 +17,7 @@ export default class Details extends Component {
   }
   render() {
     return (
-      <Container>
+      <Container style={{backgroundColor:'#a8d8ea'}}>
         <Content>
           <Button transparent block style={{margin:15}}>
             <Text style={{color:'#000000'}}>{this.props.Selected.name}</Text>

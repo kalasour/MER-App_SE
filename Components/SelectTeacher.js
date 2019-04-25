@@ -21,14 +21,14 @@ export default class SelectTeacher extends Component {
     render() {
         return (
             <Container>
-                <Content padder>
+                <Content padder  style={{backgroundColor:'#a8d8ea'}} >
                         <Col>
                             <Thumbnail square style={{ width: 280, height: 300, margin: 50, alignSelf: 'center' }} source={{ uri: this.state.Selected.profile }} />
                         </Col>
                         <Col>
                             <Text>Name : </Text>
                             <Card style={{ marginBottom: 10 }}  >
-                                <CardItem >
+                                <CardItem  style={{backgroundColor:'#ffb6b9'}}>
                                     <Body>
                                         <Text >{this.state.Selected.name}</Text>
                                     </Body>
@@ -37,7 +37,7 @@ export default class SelectTeacher extends Component {
 
                             <Text>Contact : </Text>
                             <Card style={{ marginBottom: 10 }}  >
-                                <CardItem >
+                                <CardItem style={{backgroundColor:'#ffb6b9'}}>
                                     <Body>
                                         <Text >E-mail : {this.state.Selected.contact['E-mail']}</Text>
                                         <Text >Fax : {this.state.Selected.contact.Fax}</Text>
@@ -49,7 +49,7 @@ export default class SelectTeacher extends Component {
                             </Card>
                             <Text>Educations : </Text>
                             <Card style={{ marginBottom: 10 }}  >
-                                <CardItem >
+                                <CardItem style={{backgroundColor:'#ffb6b9'}} >
                                     <Body>
                                         <Text >{this.state.Selected.Educations}</Text>
                                     </Body>
@@ -57,7 +57,7 @@ export default class SelectTeacher extends Component {
                             </Card>
                             <Text>Research Interests : </Text>
                             <Card style={{ marginBottom: 10 }}  >
-                                <CardItem >
+                                <CardItem style={{backgroundColor:'#ffb6b9'}}>
                                     <Body>
                                         <Text >{this.state.Selected['Research Interests']}</Text>
                                     </Body>

@@ -159,10 +159,10 @@ class Home extends Component {
         )
     });
     return (
-      <Container>
+      <Container style={{backgroundColor:'#a8e6cf'}}>
         <Loading Loading={this.state.Loading}></Loading>
-        <Header searchBar rounded>
-          <Item>
+        <Header searchBar rounded style={{backgroundColor:'#ffaaa5'}}>
+          <Item style={{backgroundColor:'#ffd3b6'}}>
             <Icon name="ios-search" />
             <Input placeholder="Search" value={this.state.Search} onChangeText={(Text) => { this.setState({ Search: Text }) }} />
             <TouchableHighlight disabled={this.state.Search == ''} onPress={() => this.setState({ Search: '' })}>

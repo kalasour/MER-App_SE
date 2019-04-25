@@ -67,6 +67,7 @@ export default class Profile extends Component {
 
       <Container>
         <Modal
+         
           animationType="slide"
           transparent={true}
           visible={this.state.show} >
@@ -89,10 +90,10 @@ export default class Profile extends Component {
         </Modal>
 
 
-        <Content style={{ backgroundColor: '#87cefa' }}>
+        <Content  style={{backgroundColor:'#a8e6cf'}}>
 
           <Form>
-            <CardItem style={{ backgroundColor: '#87cefa' }} >
+            <CardItem style={{ backgroundColor: '#a8e6cf' }} >
               <TouchableHighlight onPress={() => this.setState({ show: true })} >
                 <Thumbnail large source={{ uri: ((this.state.PicLink == null || this.state.PicLink == '') ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Image_of_none.svg/819px-Image_of_none.svg.png' : this.state.PicLink) }} />
               </TouchableHighlight>
@@ -123,7 +124,7 @@ export default class Profile extends Component {
 
           <Row style={{ margin: 20 }}>
             <Col >
-              <Button style={{ alignSelf: "center" }} bordered primary onPress={async () => {
+              <Button style={{ alignSelf: "center",backgroundColor:'#99e1e5' }} bordered primary onPress={async () => {
                 var user = firebase.auth().currentUser
                 user.updateProfile({ displayName: this.state.Firstname, photoURL: this.state.PicLink })
                 user.updateEmail(this.state.Email)
@@ -135,12 +136,12 @@ export default class Profile extends Component {
                   })
                 alert('Updated')
                 // firebase.auth().currentUser.updatePassword(this.state.Password)
-              }}><Text> Save </Text></Button>
+              }}><Text style={{backgroundColor:'#ffffff'}}> Save </Text></Button>
             </Col>
             <Col >
-              <Button style={{ alignSelf: "center" }} bordered danger onPress={() => {
+              <Button style={{ alignSelf: "center" ,backgroundColor:'#ff847b'}} bordered danger onPress={() => {
                 firebase.auth().signOut()
-              }}><Text>Logout</Text></Button>
+              }}><Text style={{backgroundColor:'#ffffff'}}>Logout</Text></Button>
             </Col>
           </Row>
 

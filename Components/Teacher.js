@@ -35,10 +35,10 @@ export default class Teacher extends Component {
   }
   render() {
     return (
-      <Container>
-        <Loading Loading={this.state.Loading}></Loading>
-        <Header searchBar rounded>
-          <Item>
+      <Container style={{backgroundColor:'#ecedc1'}}>
+        <Loading Loading={this.state.Loading} ></Loading>
+        <Header searchBar rounded style={{backgroundColor:'#ffaaa5'}}>
+          <Item style={{backgroundColor:'#ffd3b6'}}>
             <Icon name="ios-search" />
             <Input placeholder="Search" value={this.state.Search} onChangeText={(Text) => { this.setState({ Search: Text }) }} />
             <TouchableHighlight disabled={this.state.Search == ''} onPress={() => this.setState({ Search: '' })}>
@@ -50,7 +50,7 @@ export default class Teacher extends Component {
           </Button>
         </Header>
 
-        <Content>
+        <Content >
           {
             Object.keys(this.state.Teacher).sort((a, b) => {
               var nameA = this.state.Teacher[a].name.toLowerCase(), nameB = this.state.Teacher[b].name.toLowerCase()
@@ -65,10 +65,10 @@ export default class Teacher extends Component {
               ) != -1))
             }).map(
               (key, index) => (
-                <Card key={index}>
+                <Card key={index} >
                   <CardItem button onPress={() => this.props.navigation.navigate("SelectTeacher", {
                     Selected: this.state.Teacher[key], Key: key
-                  })} style={{ backgroundColor: '#87cefa' }}>
+                  })} style={{backgroundColor:'#ffd3b6'}}>
                     <Icon active name="chalkboard-teacher" type="FontAwesome5" />
                     <Text> {this.state.Teacher[key].name} </Text>
                   </CardItem>

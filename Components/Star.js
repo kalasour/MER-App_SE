@@ -56,7 +56,7 @@ export default class Star extends Component {
       })
     }
     return (
-      <Container >
+      <Container style={{backgroundColor:'#a8d8ea'}}>
       <Loading Loading={this.state.loading}></Loading>
         <Modal
           animationType="slide"
