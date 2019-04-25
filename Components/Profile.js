@@ -79,39 +79,41 @@ export default class Profile extends Component {
             
           </View> 
         </Modal>
-        <Content>
+
+
+        <Content style={{backgroundColor:'#87cefa'}}>
+          
           <Form>
-
-
-
-
-            <CardItem >
-              <TouchableHighlight onPress={() => this.setState({ show: true })}>
+            <CardItem style={{backgroundColor:'#87cefa'}} >
+              <TouchableHighlight onPress={() => this.setState({ show: true })} >
                 <Thumbnail large source={{ uri: "https://lh3.googleusercontent.com/Row3WviPhvCPfld8ISJUz5oyEACXNG61f3g3tDgEGuVUaHGcsztmcM0AJU55Ue4OAxACa6NKrKxJxI7JVngKYe2PAoTgVk1IzIX35xJ1q9WG8B7IUDinvwb7-M8WxgSbHHeEfd3zT3wOYNHznRRg6T0lPaL1ulfPEXWuoLMz0wr7fSVU5RYUP326tD-IJE9ye2kj0ZNVdUqlXIIyKSgSQMrd1pE6PZ4oyuW6p0IxRqE5a4lGXFBNCEgFb6Bd7YXLHh6BXAC1qr6n8wNRYVgAtQJmDuzhxWaV46ySRV48JfbMbcxfp2za3OVbkr7kKDE2s6OmBA80iKgFfMM-_Zu-Bz3aCgo94KVVmF0SMNStT_fpVP4iL9J3RN81-DKmfv_pOS8mkvPpzNYVsTCy_Lpv6lRRHuuDVqo3BR0lbsZuhJhk78SmG8fNH_iPsQo91XppTgweXLuXmQQdJCn3UTYEbCf3h0_uj4FgVybfwM6Qp6BoY63FdoY9wbvfGKbkYiz5R0AOoTbFqbo_lqPeCRZWa3OiqlwwPHXXkisFa0c5gmtQsBMaUN0Zpz1LUQaSDrW3fl6kMgw-XrFzL-wHu3aVem-ctMcymH6DsbRmru25Iyv1UhFWMDe7Yddx5x2R2fLg28bQGWPnB-7l9CIpXrNYzA7VwIRvGkfptK1iAlac_XFwZAtj0d1k5xvI6WiFeIzlxia9cELEXBuZdu8CRhSSBTIf=s379-no" }} />
               </TouchableHighlight>
             </CardItem>
 
-            <Item floatingLabel>
+            <Card style={{padding:20,marginLeft:10,marginRight:10}}>
+            <Item floatingLabel style={{marginBottom:5}}>
               <Label>Firstname</Label>
               <Input value={this.state.Firstname} onChangeText={(Text) => { this.setState({ Firstname: Text }) }} />
             </Item>
 
-            <Item floatingLabel>
+            <Item floatingLabel style={{marginBottom:5}}>
               <Label>Lastname</Label>
               <Input value={this.state.Lastname} onChangeText={(Text) => { this.setState({ Lastname: Text }) }} />
             </Item>
 
-            <Item floatingLabel>
+            <Item floatingLabel style={{marginBottom:5}}>
               <Label>Email</Label>
               <Input disabled value={this.state.Email} onChangeText={(Text) => { this.setState({ Email: Text }) }} />
             </Item>
-
+            </Card>
             {/* <Item floatingLabel>
               <Label>Password</Label>
               <Input value={this.state.Password} secureTextEntry={true} onChangeText={(Text) => { this.setState({ Password: Text }) }} />
             </Item> */}
           </Form>
-          <Row >
+       
+
+          <Row style={{margin : 20}}>
             <Col >
               <Button style={{ alignSelf: "center" }} bordered primary onPress={() => {
                 var user = firebase.auth().currentUser
@@ -127,6 +129,7 @@ export default class Profile extends Component {
               }}><Text>Logout</Text></Button>
             </Col>
           </Row>
+          
         </Content>
       </Container>
     );
