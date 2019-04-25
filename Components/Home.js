@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image, YellowBox, TouchableHighlight } from 'react-native';
-import { Container, Header, Item, Input, Icon, Button, Text, Content, Card, CardItem, Spinner, Col, Row, Left, Thumbnail, Body, Right, View } from 'native-base';
+import { Container, Header, Item, Input, Icon, Button, Text, Content, Picker, Card, CardItem, Spinner, Col, Row, Left, Thumbnail, Body, Right, View } from 'native-base';
 import { createDrawerNavigator, createAppContainer, StackActions, NavigationActions } from "react-navigation";
 import Teacher from './Teacher'
 import Subject from './Subject'
@@ -24,6 +24,8 @@ class Home extends Component {
       Subject: {},
       Loading: true,
       Search: "",
+      Sort: 0,
+      ASC: true
     };
   }
   GetData = async () => {
@@ -58,12 +60,44 @@ class Home extends Component {
     })
 
   };
+  calGPA = (key) => {
+    weight = [4, 3, 3.5, 2, 2.5, 1, 1.5, 0]
+    i = 0
+    count = 0
+    sum = 0;
+    Object.values(((this.state.Subject[key].grade == null) ? {} : this.state.Subject[key].grade)).forEach(element => {
+      sum += (element * weight[i])
+      count += element
+      i++
+    });
+    return (sum / ((count == 0) ? 1 : count)).toFixed(2)
+  }
   componentDidMount() {
     this.GetData();
   }
   render() {
 
-    ListSubject = Object.keys(this.state.Subject).map(key => {
+    ListSubject = Object.keys(this.state.Subject).sort((a, b) => {
+      var nameA = this.state.Subject[a].name.toLowerCase()
+      var nameB = this.state.Subject[b].name.toLowerCase()
+      if (this.state.Sort == 0) {
+        nameA = this.state.Subject[a].name.toLowerCase()
+        nameB = this.state.Subject[b].name.toLowerCase()
+      }
+      if (this.state.Sort == 1) {
+        nameA = this.calGPA(a)
+        nameB = this.calGPA(b)
+      }
+      if (this.state.Sort == 2) {
+        nameA = (this.state.Subject[a].viewed == null) ? 0 : this.state.Subject[a].viewed
+        nameB = (this.state.Subject[b].viewed == null) ? 0 : this.state.Subject[b].viewed
+      }
+      if (nameA < nameB)
+        return (this.state.ASC?-1:1)
+      if (nameA > nameB)
+        return (this.state.ASC?1:-1)
+      return 0
+    }).map(key => {
       if (
         this.state == "" ||
         key.toLowerCase().search(
@@ -80,7 +114,6 @@ class Home extends Component {
         ) != -1
       )
         return (
-
           <Card key={key}  >
             <CardItem>
               <Left>
@@ -97,22 +130,29 @@ class Home extends Component {
             <CardItem>
               <Left>
                 <Button transparent>
-                  <Icon active name="thumbs-up" />
-                  <Text>{parseInt(Math.random() * 20)} Likes</Text>
+                  <Text>
+                    GPA : {this.calGPA(key)}
+                  </Text>
                 </Button>
               </Left>
               <Body>
                 <Button transparent>
-                  <Icon style={{ color: '#f9ca2b' }} name="star" type="AntDesign" />
-                  <Text>{(Math.random() * 5).toPrecision(2)}</Text>
+                  <Text style={{ color: '#f9ca2b', textAlign: 'left' }}>Viewed : {(this.state.Subject[key].viewed == null) ? 0 : this.state.Subject[key].viewed}</Text>
                 </Button>
               </Body>
               <Right>
-                <Button info onPress={() => this.props.navigation.navigate("Details", {
-                  Selected: this.state.Subject[key], Key: key
-                })}>
-                
-                <Text style={{ color: '#EEF6F2' }}>See more</Text></Button>
+                <Button info onPress={async () => {
+                  this.setState({ Loading: true })
+                  firebase
+                    .database()
+                    .ref("Subject").child(key).child('viewed').set((this.state.Subject[key].viewed == null) ? 1 : (this.state.Subject[key].viewed + 1))
+                  this.setState({ Loading: false })
+                  this.props.navigation.navigate("Details", {
+                    Selected: this.state.Subject[key], Key: key
+                  })
+                }}>
+
+                  <Text style={{ color: '#EEF6F2' }}>See more</Text></Button>
               </Right>
             </CardItem>
           </Card>
@@ -125,7 +165,7 @@ class Home extends Component {
           <Item>
             <Icon name="ios-search" />
             <Input placeholder="Search" value={this.state.Search} onChangeText={(Text) => { this.setState({ Search: Text }) }} />
-            <TouchableHighlight disabled={this.state.Search==''} onPress={() => this.setState({ Search: '' })}>
+            <TouchableHighlight disabled={this.state.Search == ''} onPress={() => this.setState({ Search: '' })}>
               <Icon name="circle-with-cross" type="Entypo" />
             </TouchableHighlight>
           </Item>
@@ -133,7 +173,37 @@ class Home extends Component {
             <Text>Search</Text>
           </Button>
         </Header>
-        <Content padder >{ListSubject}</Content>
+        <Content padder >
+          <Item picker>
+          <Picker
+              mode="dropdown"
+              iosIcon={<Icon name="arrow-down" />}
+              style={{ width: undefined }}
+              placeholderStyle={{ color: "#bfc6ea" }}
+              placeholderIconColor="#007aff"
+              selectedValue={this.state.Sort}
+              onValueChange={(value) => this.setState({ Sort: value })}
+            >
+              <Picker.Item label="Name" value={0} />
+              <Picker.Item label="GPA" value={1} />
+              <Picker.Item label="Viewed" value={2} />
+            </Picker>
+
+            <Picker
+              mode="dropdown"
+              iosIcon={<Icon name="arrow-down" />}
+              style={{ width: undefined }}
+              placeholderStyle={{ color: "#bfc6ea" }}
+              placeholderIconColor="#007aff"
+              selectedValue={this.state.ASC}
+              onValueChange={(value) => this.setState({ ASC: value })}
+            >
+              <Picker.Item label="ASC" value={true} />
+              <Picker.Item label="DESC" value={false} />
+            </Picker>
+          </Item>
+          {ListSubject}
+        </Content>
       </Container>
     );
   }
@@ -144,9 +214,9 @@ const MyDrawerNavigator = createDrawerNavigator({
   Home: {
     screen: Home,
   },
-  Subject: {
-    screen: Subject,
-  },
+  // Subject: {
+  //   screen: Subject,
+  // },
   Teacher: {
     screen: Teacher,
   },
