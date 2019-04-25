@@ -110,11 +110,13 @@ class Home extends Component {
               <Right>
                 <Button bordered info onPress={() => this.props.navigation.navigate("Details", {
                   Selected: this.state.Subject[key], Key: key
-                })}><Text>See more</Text></Button>
+                })}style={{backgroundColor:'#7987E0'}}>
+                
+                <Text style={{ color: '#EEF6F2' }}>See more</Text></Button>
               </Right>
             </CardItem>
           </Card>
-        );
+        )
     });
     return (
       <Container>
