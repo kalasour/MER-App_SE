@@ -60,9 +60,9 @@ export default class Comment extends Component {
             <Content padder>
                 <Loading Loading={this.state.Loading}></Loading>
                 {Object.values(this.state.CM).sort(this.compare).map((item, index) => (
-                    <Card key={index}>
+                    <Card  key={index}>
                         <CardItem header>
-                            <Thumbnail small source={{ uri: "https://facebook.github.io/react-native/docs/assets/favicon.png" }} />
+                            <Thumbnail  small source={{ uri: "https://facebook.github.io/react-native/docs/assets/favicon.png" }} />
                             <Text>
                                 {"  " + item.name + ' - '}
                             </Text>
@@ -71,8 +71,8 @@ export default class Comment extends Component {
                                 {item.time}
                             </Text>
                         </CardItem>
-                        <CardItem>
-                            <Body>
+                        <CardItem  >
+                            <Body >
                                 <Text>
                                     {item.detail}
                                 </Text>
