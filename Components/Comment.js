@@ -57,7 +57,7 @@ export default class Comment extends Component {
     }
     render() {
         return (
-            <Content padder>
+            <Content padder style={{backgroundColor:'#87cefa'}}>
                 <Loading Loading={this.state.Loading}></Loading>
                 {Object.values(this.state.CM).sort(this.compare).map((item, index) => (
                     <Card  key={index}>
@@ -81,11 +81,11 @@ export default class Comment extends Component {
                     </Card>
                 ))}
                 <Text Styled='bold'>Comment </Text>
-                <Form>
+                <Form style={{backgroundColor:'#faebd7'}}>
                     <Textarea value={this.state.comment} onChangeText={(Text) => { this.setState({ comment: Text }) }} rowSpan={5} bordered placeholder="Add your comment here." />
 
                 </Form>
-                <Button onPress={() => this.Submit()} info style={{ margin: 10 }}><Text>Submit</Text></Button>
+                <Button onPress={() => this.Submit()} info style={{ margin: 10 ,backgroundColor:'#00008b'}}><Text>Submit</Text></Button>
             </Content>
         );
     }
