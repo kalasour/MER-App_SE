@@ -90,9 +90,10 @@ class Home extends Component {
                   <Text note>{key}</Text>
                 </Body>
               </Left>
+            
             </CardItem>
             <CardItem cardBody>
-              <Image source={require('./resources/logo.png')} style={{ height: 200, width: null, flex: 1 }} />
+              <Image source={require('./resources/computerEngineering.png')} style={{ height: 200, width: null, flex: 1 }} />
             </CardItem>
             <CardItem>
               <Left>
@@ -109,8 +110,9 @@ class Home extends Component {
               </Body>
               <Right>
                 <Button bordered info onPress={() => this.props.navigation.navigate("Details", {
-                  Selected: this.state.Subject[key], Key: key
-                })}><Text>See more</Text></Button>
+                  Selected: this.state.Subject[key], Key: key})}  style={{backgroundColor:'#7987E0'}}>
+                
+                <Text style={{ color: '#EEF6F2' }} >see more</Text></Button>
               </Right>
             </CardItem>
           </Card>
