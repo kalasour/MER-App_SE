@@ -5,7 +5,6 @@ import { createDrawerNavigator, createAppContainer, StackActions, NavigationActi
 import { Modal } from 'react-native';
 import * as firebase from 'firebase/app'
 import {
-
   TouchableHighlight
 } from 'react-native';
 import "firebase/auth";
@@ -80,7 +79,9 @@ export default class Profile extends Component {
                     }}><Thumbnail large source={{ uri: uri }} /></TouchableHighlight>
                 ))}
               </Row>
-              <Button style={{margin:20}} danger full onPress={() => this.setState({ show: false })}><Text>Cancel</Text></Button>
+                <Button full style={{alignSelf:'center'}} icon danger style={{ margin: 20 }} onPress={() => this.setState({ show: false })}>
+                  <Icon name="circle-with-cross" type="Entypo" />
+                </Button>
             </Content>
           </Container>
         </Modal>
