@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Card, CardItem, Text, Icon, Right } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Text, Icon, Right ,View} from 'native-base';
 
 export default class Teacher extends Component {
   static navigationOptions = {
@@ -16,7 +16,11 @@ export default class Teacher extends Component {
   render() {
     return (
       <Container>
-        <Header></Header>
+        <Header>
+          <View >
+            <Text style={{alignItems:'center',padding:15,fontSize:25,color:'#f0f8ff'}}>TEACHER</Text>
+          </View>
+        </Header>
           
         <Content>
           <Text>    A</Text>
