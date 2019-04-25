@@ -48,8 +48,8 @@ export default class Details extends Component {
               <Text>{this.props.Selected.teacher}</Text>
             </Right>
           </ListItem>
-          <Card style={{marginTop:15}}>
-            <CardItem>
+          <Card style={{marginTop:15}}  >
+            <CardItem >
               <Body>
               <Text >{this.props.Selected.detail}</Text>
               </Body>

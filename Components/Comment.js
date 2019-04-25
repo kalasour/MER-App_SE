@@ -71,7 +71,7 @@ export default class Comment extends Component {
                                 {item.time}
                             </Text>
                         </CardItem>
-                        <CardItem  >
+                        <CardItem style={{backgroundColor:'#faebd7'}}  >
                             <Body >
                                 <Text>
                                     {item.detail}
