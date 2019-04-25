@@ -6,12 +6,9 @@ export default class Grade extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [],
-            labels: [],
         };
     }
     componentDidMount() {
-        this.setState({ data: Object.values(this.props.Selected.grade), labels: Object.keys(this.props.Selected.grade) })
     }
     render() {
 
@@ -38,7 +35,7 @@ export default class Grade extends Component {
             insetX: 10
         };
         return (
-                <LineChart style={{ flex: 1 }} config={config} data={this.state.data} xLabels={this.state.labels} />
+                <LineChart style={{ flex: 1 }} config={config} data={ Object.values(this.props.Selected.grade)} xLabels={Object.keys(this.props.Selected.grade)} />
         );
     }
 }
