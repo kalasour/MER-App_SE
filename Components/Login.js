@@ -55,8 +55,8 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <Container   >
-        <Header renderHeader="center" backgroundColor="#84cee8" >
+      <Container  style={{backgroundColor:'#a8d8ea'}} >
+        <Header renderHeader="center" style={{backgroundColor:'#ffaaa5'}}>
           <Left />
           <Body>
             <Title>log in</Title>
@@ -94,17 +94,12 @@ export default class Login extends Component {
               <Label>Password</Label>
               <Input value={this.state.Password} secureTextEntry={true} onChangeText={(Text) => { this.setState({ Password: Text }) }} />
             </Item>
-            <Button style={{ alignSelf: 'center', marginTop: 10 }} primary onPress={() => {
+            <Button style={{ alignSelf: 'center', marginTop: 10 , backgroundColor: '#e0f9b5'}} primary onPress={() => {
               this.login()
             }} ><Text> login </Text></Button>
-            <Button style={{ alignSelf: 'center', marginTop: 10 }} primary onPress={() => {
+            <Button style={{ alignSelf: 'center', marginTop: 10 , backgroundColor: '#ffd3b6'}} primary onPress={() => {
               this.props.navigation.navigate('Register')
             }} ><Text> Register </Text></Button>
-            <Button style={{ alignSelf: 'center', marginTop: 10, backgroundColor: 'purple' }} onPress={() => {
-              alert('hee')
-            }}>
-              <Text>CMU Login</Text>
-            </Button>
           </Form>
         </Content>
 

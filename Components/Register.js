@@ -34,8 +34,8 @@ export default class Register extends Component {
   }
   render() {
     return (
-      <Container>
-        <Header renderHeader="center" backgroundColor="#2cba2c" >
+      <Container  style={{backgroundColor:'#a8d8ea'}}>
+        <Header renderHeader="center" style={{backgroundColor:'#ffaaa5'}} >
           <Left />
           <Body>
             <Title>Register</Title>
@@ -68,7 +68,7 @@ export default class Register extends Component {
               <Input value={this.state.Password} secureTextEntry={true} onChangeText={(Text) => { this.setState({ Password: Text }) }} />
             </Item>
 
-            <Button style={{ alignSelf: 'center', marginTop: 10 }} primary onPress={() => {
+            <Button style={{ alignSelf: 'center', marginTop: 10 ,backgroundColor:'#46cdcf' }} primary onPress={() => {
               this.Register(this.state.Firstname)
             }}><Text> Sign up </Text></Button>
           </Form>
