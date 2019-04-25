@@ -100,14 +100,14 @@ export default class Profile extends Component {
 
             <Card style={{ padding: 20, marginLeft: 10, marginRight: 10 }}>
               <Item floatingLabel style={{ marginBottom: 5 }}>
-                <Label>Firstname</Label>
+                <Label>Username</Label>
                 <Input value={this.state.Firstname} onChangeText={(Text) => { this.setState({ Firstname: Text }) }} />
               </Item>
 
-              <Item floatingLabel style={{ marginBottom: 5 }}>
+              {/* <Item floatingLabel style={{ marginBottom: 5 }}>
                 <Label>Lastname</Label>
                 <Input value={this.state.Lastname} onChangeText={(Text) => { this.setState({ Lastname: Text }) }} />
-              </Item>
+              </Item> */}
 
               <Item floatingLabel style={{ marginBottom: 5 }}>
                 <Label>Email</Label>

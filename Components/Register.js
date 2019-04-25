@@ -49,14 +49,14 @@ export default class Register extends Component {
         <Content>
           <Form>
             <Item floatingLabel>
-              <Label>Firstname</Label>
+              <Label>Username</Label>
               <Input value={this.state.Firstname} onChangeText={(Text) => { this.setState({ Firstname: Text }) }} />
             </Item>
 
-            <Item floatingLabel>
+            {/* <Item floatingLabel>
               <Label>Lastname</Label>
               <Input value={this.state.Lastname} onChangeText={(Text) => { this.setState({ Lastname: Text }) }} />
-            </Item>
+            </Item> */}
 
             <Item floatingLabel>
               <Label>Email</Label>

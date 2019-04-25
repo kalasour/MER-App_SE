@@ -87,7 +87,7 @@ export default class Login extends Component {
         </Modal>
           <Form>
             <Item floatingLabel>
-              <Label>Username</Label>
+              <Label>E-mail</Label>
               <Input value={this.state.Username} onChangeText={(Text) => { this.setState({ Username: Text }) }} />
             </Item>
             <Item floatingLabel last>
