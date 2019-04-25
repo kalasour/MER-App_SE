@@ -92,7 +92,7 @@ class Home extends Component {
               </Left>
             </CardItem>
             <CardItem cardBody>
-              <Image source={require('./resources/logo.png')} style={{ height: 200, width: null, flex: 1 }} />
+              <Image source={require('./resources/computerEngineering.png')} style={{ height: 200, width: null, flex: 1 }} />
             </CardItem>
             <CardItem>
               <Left>
