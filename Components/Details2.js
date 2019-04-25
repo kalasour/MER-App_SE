@@ -18,7 +18,6 @@ export default class Details2 extends Component {
       Selected: {},
       ID: "",
       uid: '',
-      grade: null,
       Loading: false
     };
   }
@@ -27,9 +26,6 @@ export default class Details2 extends Component {
     this.setState({ Selected: navigation.getParam("Selected", "error"), ID: navigation.getParam("Key", "error") });
     if (firebase.auth().currentUser !== null)
       await this.setState({ uid: firebase.auth().currentUser.uid })
-    await firebase.database().ref('Grade').child(this.state.uid).once('value').then((snapshot) => {
-      this.setState({ grade: snapshot.val() })
-    })
   }
   calGPA = () => {
     weight = [4, 3, 3.5, 2, 2.5, 1, 1.5, 0]
@@ -45,9 +41,9 @@ export default class Details2 extends Component {
   }
   Change = async (text) => {
     this.setState({ Loading: true })
-    if (this.state.grade != null)
+    if (this.state.Selected[this.state.uid] != null)
       await this.setState((previousState) => {
-        previousState.Selected.grade[this.state.grade] = previousState.Selected.grade[this.state.grade] - 1;
+        previousState.Selected.grade[this.state.Selected[this.state.uid]] = previousState.Selected.grade[this.state.Selected[this.state.uid]] - 1;
         return previousState;
       })
 
@@ -56,10 +52,11 @@ export default class Details2 extends Component {
         previousState.Selected.grade[text] = previousState.Selected.grade[text] + 1;
         return previousState;
       })
-    await this.setState({ grade: text })
-    await firebase
-      .database()
-      .ref("Grade").child(this.state.uid).set(this.state.grade)
+
+    await this.setState((previousState) => {
+      previousState.Selected[this.state.uid] = text
+      return previousState;
+    })
     await firebase
       .database()
       .ref("Subject").child(this.state.ID).update(this.state.Selected)
@@ -83,7 +80,7 @@ export default class Details2 extends Component {
                 placeholder="Select your Grade"
                 placeholderStyle={{ color: "#bfc6ea" }}
                 placeholderIconColor="#007aff"
-                selectedValue={this.state.grade}
+                selectedValue={this.state.Selected[this.state.uid]}
                 onValueChange={(text) => { this.Change(text) }}
               >
                 <Picker.Item label="Select your Grade" value={null} />
