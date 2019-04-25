@@ -59,7 +59,7 @@ export default class Comment extends Component {
         return (
             <Content padder style={{backgroundColor:'#87cefa'}}>
                 <Loading Loading={this.state.Loading}></Loading>
-                {Object.values(this.state.CM).sort(this.compare).map((item, index) => (
+                {Object.values(((this.state.CM==null)?{}:this.state.CM)).sort(this.compare).map((item, index) => (
                     <Card  key={index}>
                         <CardItem header>
                             <Thumbnail  small source={{ uri: "https://facebook.github.io/react-native/docs/assets/favicon.png" }} />
