@@ -22,7 +22,6 @@ export default class SelectTeacher extends Component {
         return (
             <Container>
                 <Content padder>
-                    <Row>
                         <Col>
                             <Thumbnail square style={{ width: 280, height: 300, margin: 50, alignSelf: 'center' }} source={{ uri: this.state.Selected.profile }} />
                         </Col>
@@ -65,7 +64,6 @@ export default class SelectTeacher extends Component {
                                 </CardItem>
                             </Card>
                         </Col>
-                    </Row>
                 </Content>
             </Container>
         );
