@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, Card, CardItem, Text, Icon, Right ,View} from 'native-base';
-
+import { Image, YellowBox, TouchableHighlight } from 'react-native';
+import { Container, Header, Item, Input, Icon, Button, Text, Content, Card, CardItem, Spinner, Col, Row, Left, Thumbnail, Body, Right, View } from 'native-base';
+import { createDrawerNavigator, createAppContainer, StackActions, NavigationActions } from "react-navigation";
+import * as firebase from 'firebase/app'
+import "firebase/auth";
+import "firebase/database";
+import Loading from './Loading'
 export default class Teacher extends Component {
   static navigationOptions = {
     title: 'Teacher', header: null, drawerIcon: ({ tintColor }) => {
@@ -10,132 +15,67 @@ export default class Teacher extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      Teacher: {},
+      Loading: false,
+      Search: ''
     };
   }
+  async componentDidMount() {
+    this.setState({ Loading: true })
+    await firebase
+      .database()
+      .ref("Teacher")
+      .on("value", snapshot => {
+        this.setState({
+          Teacher: snapshot.val()
+          , Loading: false,
+        });
+      });
 
+  }
   render() {
     return (
       <Container>
-        <Header>
-          <View >
-            <Text style={{alignItems:'center',padding:15,fontSize:25,color:'#f0f8ff'}}>TEACHER</Text>
-          </View>
+        <Loading Loading={this.state.Loading}></Loading>
+        <Header searchBar rounded>
+          <Item>
+            <Icon name="ios-search" />
+            <Input placeholder="Search" value={this.state.Search} onChangeText={(Text) => { this.setState({ Search: Text }) }} />
+            <TouchableHighlight disabled={this.state.Search == ''} onPress={() => this.setState({ Search: '' })}>
+              <Icon name="circle-with-cross" type="Entypo" />
+            </TouchableHighlight>
+          </Item>
+          <Button transparent>
+            <Text>Search</Text>
+          </Button>
         </Header>
-          
+
         <Content>
-          <Text>    A</Text>
-          <Card>
-            <CardItem  style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Anya Apavatjrut </Text>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem  style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Arnan Sipitakiat </Text>
-            </CardItem >
-          </Card>
-          <Text>    C</Text>
-          <Card>
-            <CardItem style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Chinawat Isradisaikul </Text>
-            </CardItem>
-          </Card>
-          <Text>    D</Text>
-          <Card>
-            <CardItem style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Dome Potikanond </Text>
-            </CardItem>
-          </Card>
-          <Text>   J</Text>
-          <Card>
-            <CardItem  style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Juggapong Natwichai </Text>
-            </CardItem>
-          </Card>
-          <Text>    K</Text>
-          <Card>
-            <CardItem  style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Karn Patanukhom </Text>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Kenneth Cosh </Text>
-            </CardItem>
-          </Card>
-          <Text>    L</Text>
-          <Card>
-            <CardItem style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Lachana Ramingwong </Text>
-            </CardItem>
-          </Card>
-          <Text>    N</Text>
-          <Card>
-            <CardItem style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Narathip Tiangtae </Text>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Narissara Eiamkanitchat </Text>
-            </CardItem>
-          </Card>
-          <Text>    P</Text>
-          <Card>
-            <CardItem  style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Paskorn Champrasert </Text>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem  style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Pruet Boonma </Text>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem  style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Patiwet Wuttisarnwattana </Text>
-            </CardItem>
-          </Card>
-          <Text>    S</Text>
-          <Card>
-            <CardItem  style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Sakgasit Ramingwong </Text>
-            </CardItem>
-          </Card>
-          <Card>
-            <CardItem  style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Sansanee Auephanwiriyakul </Text>
-            </CardItem>
-          </Card>
-          <Text>    T</Text>
-          <Card>
-            <CardItem  style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Trasapong Thaiupathump </Text>
-            </CardItem>
-          </Card>
-          <Text>    Y</Text>
-          <Card>
-            <CardItem  style={{backgroundColor:'#87cefa'}}>
-              <Icon active name="chalkboard-teacher" type="FontAwesome5" />
-              <Text> Yuthapong Somchit </Text>
-            </CardItem>
-          </Card>
+          {
+            Object.keys(this.state.Teacher).sort((a, b) => {
+              var nameA = this.state.Teacher[a].name.toLowerCase(), nameB = this.state.Teacher[b].name.toLowerCase()
+              if (nameA < nameB)
+                return -1
+              if (nameA > nameB)
+                return 1
+              return 0
+            }).filter((key) => {
+              return ((this.state.Search == '') || (this.state.Teacher[key].name.toLowerCase().search(
+                this.state.Search.toLowerCase()
+              ) != -1))
+            }).map(
+              (key, index) => (
+                <Card key={index}>
+                  <CardItem button onPress={() => this.props.navigation.navigate("SelectTeacher", {
+                    Selected: this.state.Teacher[key], Key: key
+                  })} style={{ backgroundColor: '#87cefa' }}>
+                    <Icon active name="chalkboard-teacher" type="FontAwesome5" />
+                    <Text> {this.state.Teacher[key].name} </Text>
+                  </CardItem>
+                </Card>
+              )
+            )
+          }
         </Content>
       </Container>
     );

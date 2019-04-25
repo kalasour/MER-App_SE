@@ -12,7 +12,7 @@ import Details from './Components/Details'
 import Subject from './Components/Subject'
 import Teacher from './Components/Teacher'
 import Details2 from './Components/Details2'
-
+import SelectTeacher from './Components/SelectTeacher'
 
 const AppNavigator = createStackNavigator({
     App: {
@@ -25,14 +25,16 @@ const AppNavigator = createStackNavigator({
         screen: Home
     }, Details: {
         screen: Details2
-    }, Subject:{
+    }, Subject: {
         screen: Subject
-    }, Teacher:{
+    }, Teacher: {
         screen: Teacher
+    }, SelectTeacher: {
+        screen: SelectTeacher
     }
-    
 
-    
+
+
 },
     {
         initialRouteName: "App"

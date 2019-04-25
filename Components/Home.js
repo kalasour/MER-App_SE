@@ -108,9 +108,9 @@ class Home extends Component {
                 </Button>
               </Body>
               <Right>
-                <Button bordered info onPress={() => this.props.navigation.navigate("Details", {
+                <Button info onPress={() => this.props.navigation.navigate("Details", {
                   Selected: this.state.Subject[key], Key: key
-                })}style={{backgroundColor:'#7987E0'}}>
+                })}>
                 
                 <Text style={{ color: '#EEF6F2' }}>See more</Text></Button>
               </Right>
