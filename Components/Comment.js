@@ -12,12 +12,15 @@ export default class Comment extends Component {
             comment: "",
             uid: "",
             Loading: false,
+            name: "",
+            Subject: {},
+            CM: {}
         };
     }
     Submit = async () => {
         this.setState({ Loading: true })
         var now = await new Date().toLocaleDateString("en-US").toString()
-        CM = await { detail: this.state.comment, time: now, uid: this.state.uid }
+        CM = await { detail: this.state.comment, time: now, uid: this.state.uid, name: this.state.name }
         await firebase
             .database()
             .ref("Subject")
@@ -29,18 +32,39 @@ export default class Comment extends Component {
     }
     async componentDidMount() {
         if (firebase.auth().currentUser !== null)
-            await this.setState({ uid: firebase.auth().currentUser.uid })
+            await this.setState({ uid: firebase.auth().currentUser.uid, name: firebase.auth().currentUser.displayName })
+
+        await firebase
+            .database()
+            .ref("Subject")
+            .on("value", snapshot => {
+                this.setState({
+                    Subject: snapshot.val()
+                    , Loading: false,
+                    CM: snapshot.val()[this.props.ID].comments
+                });
+            });
+    }
+
+    compare = (a, b) => {
+        if (new Date(a.time) < new Date(b.time)) {
+            return -1;
+        }
+        if (new Date(a.time) > new Date(b.time)) {
+            return 1;
+        }
+        return 0;
     }
     render() {
         return (
             <Content padder>
                 <Loading Loading={this.state.Loading}></Loading>
-                {Object.values(this.props.Selected.comments).map((item, index) => (
+                {Object.values(this.state.CM).sort(this.compare).map((item, index) => (
                     <Card key={index}>
                         <CardItem header>
                             <Thumbnail small source={{ uri: "https://facebook.github.io/react-native/docs/assets/favicon.png" }} />
                             <Text>
-                                {"  " + item.uid + ' - '}
+                                {"  " + item.name + ' - '}
                             </Text>
 
                             <Text style={{ fontSize: 12 }}>
