@@ -49,7 +49,7 @@ export default class Register extends Component {
         <Content>
           <Form>
             <Item floatingLabel>
-              <Label>Username</Label>
+              <Label style={{color:'#ffffff'}}>Username</Label>
               <Input value={this.state.Firstname} onChangeText={(Text) => { this.setState({ Firstname: Text }) }} />
             </Item>
 
@@ -59,12 +59,12 @@ export default class Register extends Component {
             </Item> */}
 
             <Item floatingLabel>
-              <Label>Email</Label>
+              <Label style={{color:'#ffffff'}}>Email</Label>
               <Input value={this.state.Email} onChangeText={(Text) => { this.setState({ Email: Text }) }} />
             </Item>
 
             <Item floatingLabel>
-              <Label>Password</Label>
+              <Label style={{color:'#ffffff'}}>Password</Label>
               <Input value={this.state.Password} secureTextEntry={true} onChangeText={(Text) => { this.setState({ Password: Text }) }} />
             </Item>
 

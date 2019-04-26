@@ -67,21 +67,20 @@ export default class Profile extends Component {
 
       <Container>
         <Modal
-         
+
           animationType="slide"
           transparent={true}
           visible={this.state.show} >
           <Container style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(0,0,0,0.5)' }}>
             <Content padder style={{ marginTop: 22 }}>
-              <Row>
-                {this.state.PicList.map((uri, index) => (
-                  <TouchableHighlight
-                    key={index}
-                    onPress={() => {
-                      this.setState({ show: false, PicLink: uri })
-                    }}><Thumbnail large source={{ uri: uri }} /></TouchableHighlight>
-                ))}
-              </Row>
+              {this.state.PicList.map((uri, index) => (
+                <TouchableHighlight
+                  style={{ margin: 10 }}
+                  key={index}
+                  onPress={() => {
+                    this.setState({ show: false, PicLink: uri })
+                  }}><Thumbnail large source={{ uri: uri }} /></TouchableHighlight>
+              ))}
               <Button full style={{ alignSelf: 'center' }} icon danger style={{ margin: 20 }} onPress={() => this.setState({ show: false })}>
                 <Icon name="circle-with-cross" type="Entypo" />
               </Button>
@@ -90,7 +89,7 @@ export default class Profile extends Component {
         </Modal>
 
 
-        <Content  style={{backgroundColor:'#a8e6cf'}}>
+        <Content style={{ backgroundColor: '#a8e6cf' }}>
 
           <Form>
             <CardItem style={{ backgroundColor: '#a8e6cf' }} >
@@ -124,7 +123,7 @@ export default class Profile extends Component {
 
           <Row style={{ margin: 20 }}>
             <Col >
-              <Button style={{ alignSelf: "center",backgroundColor:'#99e1e5' }} bordered primary onPress={async () => {
+              <Button style={{ alignSelf: "center", backgroundColor: '#99e1e5' }} bordered primary onPress={async () => {
                 var user = firebase.auth().currentUser
                 user.updateProfile({ displayName: this.state.Firstname, photoURL: this.state.PicLink })
                 user.updateEmail(this.state.Email)
@@ -136,12 +135,12 @@ export default class Profile extends Component {
                   })
                 alert('Updated')
                 // firebase.auth().currentUser.updatePassword(this.state.Password)
-              }}><Text style={{backgroundColor:'#ffffff'}}> Save </Text></Button>
+              }}><Text style={{ backgroundColor: '#ffffff' }}> Save </Text></Button>
             </Col>
             <Col >
-              <Button style={{ alignSelf: "center" ,backgroundColor:'#ff847b'}} bordered danger onPress={() => {
+              <Button style={{ alignSelf: "center", backgroundColor: '#ff847b' }} bordered danger onPress={() => {
                 firebase.auth().signOut()
-              }}><Text style={{backgroundColor:'#ffffff'}}>Logout</Text></Button>
+              }}><Text style={{ backgroundColor: '#ffffff' }}>Logout</Text></Button>
             </Col>
           </Row>
 

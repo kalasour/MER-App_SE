@@ -21,49 +21,49 @@ export default class SelectTeacher extends Component {
     render() {
         return (
             <Container>
-                <Content padder  style={{backgroundColor:'#a8d8ea'}} >
-                        <Col>
-                            <Thumbnail square style={{ width: 280, height: 300, margin: 50, alignSelf: 'center' }} source={{ uri: this.state.Selected.profile }} />
-                        </Col>
-                        <Col>
-                            <Text>Name : </Text>
-                            <Card style={{ marginBottom: 10 }}  >
-                                <CardItem  style={{backgroundColor:'#ffb6b9'}}>
-                                    <Body>
-                                        <Text >{this.state.Selected.name}</Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
+                <Content padder style={{ backgroundColor: '#ecedc1' }} >
+                    <Col>
+                        <Thumbnail square style={{ width: 280, height: 300, margin: 50, alignSelf: 'center' }} source={{ uri: this.state.Selected.profile }} />
+                    </Col>
+                    <Col>
+                        <Row><Icon active name="rename-box" type="MaterialCommunityIcons" /><Text>Name : </Text></Row>
+                        <Card style={{ marginBottom: 10 }}  >
+                            <CardItem style={{ backgroundColor: '#ffd3b6' }}>
+                                <Body>
+                                    <Text >{this.state.Selected.name}</Text>
+                                </Body>
+                            </CardItem>
+                        </Card>
 
-                            <Text>Contact : </Text>
-                            <Card style={{ marginBottom: 10 }}  >
-                                <CardItem style={{backgroundColor:'#ffb6b9'}}>
-                                    <Body>
-                                        <Text >E-mail : {this.state.Selected.contact['E-mail']}</Text>
-                                        <Text >Fax : {this.state.Selected.contact.Fax}</Text>
-                                        <Text >Office Hours : {this.state.Selected.contact['Office Hours']}</Text>
-                                        <Text >Phone : {this.state.Selected.contact.Phone}</Text>
-                                        <Text >Room : {this.state.Selected.contact.Room}</Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
-                            <Text>Educations : </Text>
-                            <Card style={{ marginBottom: 10 }}  >
-                                <CardItem style={{backgroundColor:'#ffb6b9'}} >
-                                    <Body>
-                                        <Text >{this.state.Selected.Educations}</Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
-                            <Text>Research Interests : </Text>
-                            <Card style={{ marginBottom: 10 }}  >
-                                <CardItem style={{backgroundColor:'#ffb6b9'}}>
-                                    <Body>
-                                        <Text >{this.state.Selected['Research Interests']}</Text>
-                                    </Body>
-                                </CardItem>
-                            </Card>
-                        </Col>
+                        <Row><Icon active name="contacts" type="AntDesign" /><Text>Contact : </Text></Row>
+                        <Card style={{ marginBottom: 10 }}  >
+                            <CardItem style={{ backgroundColor: '#ffd3b6' }}>
+                                <Body>
+                                    <Text >E-mail : {this.state.Selected.contact['E-mail']}</Text>
+                                    <Text >Fax : {this.state.Selected.contact.Fax}</Text>
+                                    <Text >Office Hours : {this.state.Selected.contact['Office Hours']}</Text>
+                                    <Text >Phone : {this.state.Selected.contact.Phone}</Text>
+                                    <Text >Room : {this.state.Selected.contact.Room}</Text>
+                                </Body>
+                            </CardItem>
+                        </Card>
+                        <Row><Icon active name="book" type="AntDesign" /><Text>Educations : </Text></Row>
+                        <Card style={{ marginBottom: 10 }}  >
+                            <CardItem style={{ backgroundColor: '#ffd3b6' }} >
+                                <Body>
+                                    <Text >{this.state.Selected.Educations}</Text>
+                                </Body>
+                            </CardItem>
+                        </Card>
+                        <Row><Icon active name="lab-flask" type="Entypo" /><Text>Research Interests : </Text></Row>
+                        <Card style={{ marginBottom: 10 }}  >
+                            <CardItem style={{ backgroundColor: '#ffd3b6' }}>
+                                <Body>
+                                    <Text >{this.state.Selected['Research Interests']}</Text>
+                                </Body>
+                            </CardItem>
+                        </Card>
+                    </Col>
                 </Content>
             </Container>
         );

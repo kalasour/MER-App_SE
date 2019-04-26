@@ -184,7 +184,7 @@ class Home extends Component {
               selectedValue={this.state.Sort}
               onValueChange={(value) => this.setState({ Sort: value })}
             >
-              <Picker.Item label="Name" value={0} />
+              <Picker.Item  label="Name" value={0} />
               <Picker.Item label="GPA" value={1} />
               <Picker.Item label="Viewed" value={2} />
             </Picker>

@@ -87,11 +87,11 @@ export default class Login extends Component {
         </Modal>
           <Form>
             <Item floatingLabel>
-              <Label>E-mail</Label>
+              <Label style={{color:'#ffffff'}}>E-mail</Label>
               <Input value={this.state.Username} onChangeText={(Text) => { this.setState({ Username: Text }) }} />
             </Item>
             <Item floatingLabel last>
-              <Label>Password</Label>
+              <Label style={{color:'#ffffff'}}>Password</Label>
               <Input value={this.state.Password} secureTextEntry={true} onChangeText={(Text) => { this.setState({ Password: Text }) }} />
             </Item>
             <Button style={{ alignSelf: 'center', marginTop: 10 , backgroundColor: '#e0f9b5'}} primary onPress={() => {
